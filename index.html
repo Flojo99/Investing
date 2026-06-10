@@ -3,641 +3,819 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meal Prep Plan — Florian & Laura</title>
+<title>Trading Brain</title>
 <style>
-:root{--bg:#F7F6F2;--sur:#FFFFFF;--sur2:#F0EFE9;--bdr:#E2E0D8;--bdr2:#D0CEC4;--txt:#1A1A18;--txt2:#6B6960;--txt3:#9B9890;--blue:#1A5FA8;--blue-bg:#EBF2FB;--grn:#1A7A4A;--grn-bg:#E8F5EE;--amb:#92600A;--amb-bg:#FDF3E3;--cook:#1655A0;--cook-bg:#E6F0FB;--fc:#1A5FA8;--lc:#8B4A00;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--r:8px;--r2:12px}
-*{box-sizing:border-box;margin:0;padding:0}html{font-size:14px}
-body{font-family:var(--font);background:var(--bg);color:var(--txt);line-height:1.5}
-.app{max-width:1400px;margin:0 auto;padding:1.5rem}
-.hdr{margin-bottom:1.5rem}.hdr h1{font-size:1.25rem;font-weight:600}.hdr p{font-size:.85rem;color:var(--txt2);margin-top:2px}
-.sett{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r2);padding:1rem 1.25rem;margin-bottom:1.25rem}
-.sett-ttl{font-size:.7rem;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.875rem}
-.sett-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.pc{background:var(--sur2);border-radius:var(--r);padding:.875rem 1rem}
-.pn{font-size:.8rem;font-weight:600;margin-bottom:.625rem}.pn.f{color:var(--fc)}.pn.l{color:var(--lc)}
-.sr{display:flex;align-items:center;gap:.625rem;margin-bottom:.5rem}
-.sl{font-size:.75rem;color:var(--txt2);width:80px;flex-shrink:0}
-.sr input[type=range]{flex:1;accent-color:var(--blue)}
-.sv{font-size:.8rem;font-weight:600;min-width:55px}
-.pi{font-size:.72rem;color:var(--txt2);margin-top:.5rem;padding:.4rem .6rem;background:var(--bg);border-radius:6px;line-height:1.9}
-.tabs{display:flex;gap:4px;margin-bottom:1.25rem;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
-.tab{padding:.5rem .875rem;font-size:.8rem;color:var(--txt2);cursor:pointer;background:transparent;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font)}
-.tab:hover{color:var(--txt)}.tab.active{color:var(--blue);font-weight:500;border-bottom-color:var(--blue)}
-.view{display:none}.view.active{display:block}
-.wk-nav{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-.wk-nav button{padding:.375rem .875rem;font-size:.8rem;border:1px solid var(--bdr2);border-radius:6px;background:var(--sur);color:var(--txt);cursor:pointer;font-family:var(--font)}
-.wk-nav button:hover{background:var(--sur2)}
-.wk-lbl{font-size:.9rem;font-weight:500;min-width:70px;text-align:center}
-.leg{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
-.li{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--txt2)}
-.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.wk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.dc{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r2);padding:.625rem}
-.dc.tr{border-top:3px solid #1A7A4A}.dc.re{border-top:3px solid var(--bdr2)}.dc.ko{border-top:3px solid #1655A0}
-.dn{font-size:.75rem;font-weight:600;margin-bottom:2px}
-.bdg{display:inline-block;font-size:.6rem;font-weight:600;padding:1px 5px;border-radius:4px;margin-bottom:4px;margin-right:2px}
-.bdg.tr{background:var(--grn-bg);color:var(--grn)}.bdg.re{background:var(--sur2);color:var(--txt2)}.bdg.ko{background:var(--cook-bg);color:var(--cook)}
-.bei{background:var(--amb-bg);border-radius:6px;padding:4px 7px;margin-bottom:5px}
-.bei-n{font-size:.6rem;font-weight:600;color:var(--amb);margin-bottom:1px}
-.bei-d{font-size:.6rem;color:#7A4A00;line-height:1.7}
-.ckb{background:var(--cook-bg);border-radius:6px;padding:5px 7px;margin:4px 0;font-size:.65rem;color:var(--cook)}
-.ckb-l{font-size:.58rem;font-weight:600;color:#0D3E78;margin-bottom:1px}
-.ml{margin-bottom:4px;padding:4px 6px;border-radius:6px;background:var(--sur2)}
-.ml-l{font-size:.58rem;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
-.mf{font-size:.65rem;color:var(--fc);cursor:pointer;line-height:1.5}
-.mfl{font-size:.65rem;color:var(--lc);cursor:pointer;line-height:1.5}
-.mf:hover,.mfl:hover{text-decoration:underline}
-.ds{margin-top:4px;padding:5px 6px;background:var(--sur2);border-radius:6px}
-.ds-r{font-size:.6rem;color:var(--txt2);margin-bottom:2px}
-.ds-b{height:3px;border-radius:2px;background:var(--bdr);margin-bottom:3px;overflow:hidden}
-.ds-f{height:3px;border-radius:2px}
-.hint{font-size:.72rem;color:var(--txt2);margin-top:.75rem;padding:.5rem .75rem;background:var(--sur2);border-radius:6px}
-.kp{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r2);padding:1rem 1.25rem;margin-bottom:.75rem}
-.kp-t{font-size:.72rem;color:var(--txt2);margin-bottom:3px}
-.kp-h{font-size:.95rem;font-weight:600;margin-bottom:6px}
-.kp-b{font-size:.8rem;color:var(--txt2);line-height:1.9}
-.kp-lnk{color:var(--blue);cursor:pointer}.kp-lnk:hover{text-decoration:underline}
-.sec-lbl{font-size:.7rem;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.07em;margin:1rem 0 .5rem}
-.wr{display:flex;align-items:center;gap:8px;margin-top:10px;padding:7px 10px;background:var(--sur2);border-radius:6px}
-.wl{font-size:.75rem;color:var(--txt2);flex:1}
-.wi{width:90px;font-size:.82rem;padding:4px 8px;border:1px solid var(--bdr2);border-radius:6px;background:var(--sur);color:var(--txt);text-align:right;font-family:var(--font)}
-.wi:focus{outline:2px solid var(--blue);border-color:transparent}
-.wu{font-size:.75rem;color:var(--txt2)}
-.ws{font-size:.65rem;color:var(--grn);background:var(--grn-bg);padding:2px 6px;border-radius:4px;margin-left:4px;display:none}
-.wres{font-size:.72rem;color:var(--txt2);margin-top:4px;padding:2px 10px}
-.ov{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:200;align-items:flex-start;justify-content:center;padding:2rem 1rem;overflow-y:auto}
-.ov.open{display:flex}
-.pp{background:var(--sur);border-radius:var(--r2);border:1px solid var(--bdr);width:100%;max-width:560px;padding:1.5rem;margin-top:1rem}
-.pp-ttl{font-size:1.05rem;font-weight:600;margin-bottom:3px}
-.pp-sub{font-size:.75rem;color:var(--txt2);margin-bottom:.875rem}
-.pp-mac{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
-.mb{background:var(--sur2);border-radius:6px;padding:7px;text-align:center}
-.mv{font-size:1rem;font-weight:600}.ml2{font-size:.65rem;color:var(--txt2)}
-.pp-sec{font-size:.68rem;font-weight:600;color:var(--txt3);text-transform:uppercase;letter-spacing:.07em;margin:.875rem 0 .4rem}
-.ing-tbl{width:100%;border-collapse:collapse;margin-bottom:.75rem}
-.ing-tbl th{text-align:left;font-size:.68rem;font-weight:600;color:var(--txt3);padding:4px 6px;border-bottom:1px solid var(--bdr)}
-.ing-tbl td{padding:4px 6px;border-bottom:1px solid var(--bdr);font-size:.78rem}
-.ing-inp{width:65px;font-size:.78rem;padding:2px 5px;border:1px solid var(--bdr2);border-radius:4px;background:var(--sur);color:var(--txt);text-align:right;font-family:var(--font)}
-.ing-inp:focus{outline:2px solid var(--blue);border-color:transparent}
-.ing-unit{font-size:.7rem;color:var(--txt2);margin-left:3px}
-.sav-btn{font-size:.75rem;padding:5px 14px;background:var(--blue);color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:var(--font);margin-top:.5rem}
-.sav-btn:hover{opacity:.9}
-.sav-ok{font-size:.72rem;color:var(--grn);margin-left:8px;display:none}
-.step{display:flex;gap:8px;margin-bottom:6px;font-size:.8rem;line-height:1.5}
-.snum{width:20px;height:20px;border-radius:50%;background:var(--sur2);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;flex-shrink:0;margin-top:1px;color:var(--txt2)}
-.tip-b{font-size:.75rem;padding:8px 10px;background:var(--sur2);border-radius:6px;color:var(--txt2);margin-top:.75rem}
-.cls-btn{float:right;cursor:pointer;font-size:.8rem;color:var(--txt2);padding:3px 10px;border:1px solid var(--bdr2);border-radius:5px;background:var(--sur);font-family:var(--font)}
-.cls-btn:hover{background:var(--sur2)}
-.port-b{font-size:.8rem;padding:7px 10px;background:var(--grn-bg);border-radius:6px;color:var(--grn);margin-bottom:.875rem}
-.ing-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px}
-.ing-i{font-size:.75rem;padding:3px 7px;background:var(--sur2);border-radius:5px}
-.kal-t{width:100%;border-collapse:collapse;font-size:.82rem}
-.kal-t th{text-align:left;font-size:.7rem;font-weight:600;color:var(--txt3);padding:7px 10px;border-bottom:1px solid var(--bdr)}
-.kal-t td{padding:9px 10px;border-bottom:1px solid var(--bdr)}
-.kal-t tr.cur td{background:var(--blue-bg)}
-.tbdg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:500}
-.tbdg-a{background:var(--sur2);color:var(--txt2)}.tbdg-c{background:var(--grn-bg);color:var(--grn)}
-.sn-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.sn-c{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r2);padding:.875rem;cursor:pointer}
-.sn-c:hover{border-color:var(--blue)}
-.sn-n{font-size:.85rem;font-weight:600;margin-bottom:3px;display:flex;align-items:center;gap:6px}
-.sn-tg{font-size:.65rem;padding:1px 6px;border-radius:4px;font-weight:500}
-.sn-m{font-size:.78rem;color:var(--txt2);line-height:1.7;margin-bottom:6px}
-.sn-mk{display:flex;gap:5px;flex-wrap:wrap}
-.sn-mb{font-size:.68rem;padding:2px 6px;border-radius:4px;background:var(--sur2);color:var(--txt2)}
-.sn-kh{background:var(--blue-bg)!important;color:var(--blue)!important}
-.sn-h{font-size:.68rem;color:var(--txt2);margin-top:5px}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+body{background:#f5f4f0;color:#1a1a1a;padding:1.5rem;font-size:14px;max-width:960px;margin:0 auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.title{font-size:16px;font-weight:600}
+.date{font-size:12px;color:#888}
+.tabs{display:flex;gap:4px;margin-bottom:1rem;flex-wrap:wrap}
+.tab{font-size:12px;padding:5px 14px;border:1px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;color:#555}
+.tab.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.panel{display:none}.panel.active{display:block}
+.label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin:1.25rem 0 .5rem}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:.85rem 1rem;margin-bottom:.5rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:.5rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:1rem}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:1rem}
+.metric{background:#f5f4f0;border-radius:8px;padding:.85rem 1rem;cursor:pointer;transition:background .15s}
+.metric:hover{background:#ebe9e3;outline:2px solid #ddd}
+.metric-lbl{font-size:10px;color:#999;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.metric-val{font-size:18px;font-weight:500;margin-top:4px}
+.metric-hint{font-size:10px;color:#bbb;margin-top:3px}
+.badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:6px;margin-bottom:5px}
+.b-warn{background:#FAEEDA;color:#633806}
+.b-ok{background:#EAF3DE;color:#27500A}
+.b-danger{background:#FCEBEB;color:#501313}
+.b-neutral{background:#f0efeb;color:#666}
+.b-blue{background:#E6F1FB;color:#0C447C}
+.asset-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:.85rem 1rem;cursor:pointer;transition:border-color .15s}
+.asset-card:hover{border-color:#185FA5}
+.aname{font-size:13px;font-weight:500;margin-bottom:2px}
+.aprice{font-size:18px;font-weight:500;margin:3px 0 2px}
+.ameta{font-size:11px;color:#777;line-height:1.6}
+.chart-hint{font-size:10px;color:#185FA5;margin-top:4px}
+.row{display:flex;align-items:flex-start;gap:10px;padding:.6rem 0;border-bottom:1px solid #f0efeb}
+.row:last-child{border-bottom:none}
+.rtxt{font-size:13px;line-height:1.5}
+.rsub{font-size:11px;color:#888;margin-top:2px}
+.ricon{font-size:18px;flex-shrink:0;margin-top:1px}
+.btn{font-size:12px;padding:5px 13px;border:1px solid #ddd;border-radius:8px;background:#fff;color:#555;cursor:pointer;margin:4px 4px 0 0}
+.btn:hover{background:#f5f4f0}
+.btn-primary{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.btn-primary:hover{background:#333}
+.btn-danger{background:#FCEBEB;color:#501313;border-color:#f09595}
+.radar-row{display:flex;align-items:center;gap:8px;padding:.45rem 0;border-bottom:1px solid #f0efeb;font-size:12px;cursor:pointer}
+.radar-row:hover{background:#fafaf8}
+.radar-row:last-child{border-bottom:none}
+.radar-label{color:#777;min-width:140px}
+.radar-val{font-weight:500;min-width:90px}
+.bar-wrap{flex:1;height:5px;background:#f0efeb;border-radius:3px;overflow:hidden;min-width:60px}
+.bar-fill{height:100%;border-radius:3px}
+.radar-sig{font-size:11px;color:#999;min-width:160px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;flex-shrink:0;margin-top:4px}
+.dot-green{background:#639922}.dot-red{background:#E24B4A}.dot-amber{background:#BA7517}
+.red{color:#E24B4A}.amber{color:#BA7517}.green{color:#639922}.blue{color:#185FA5}
+input[type=text],input[type=date],select,textarea{width:100%;padding:6px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;background:#fff;color:#1a1a1a;margin-bottom:8px}
+textarea{resize:vertical;min-height:60px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.trade-row{display:flex;align-items:center;gap:8px;padding:.5rem 0;border-bottom:1px solid #f0efeb;font-size:12px}
+.trade-row:last-child{border-bottom:none}
+.trade-asset{font-weight:500;min-width:80px}
+.trade-dir{padding:2px 7px;border-radius:5px;font-size:11px;font-weight:500}
+.dir-long{background:#EAF3DE;color:#27500A}
+.dir-short{background:#FCEBEB;color:#501313}
+.trade-result{font-weight:500;min-width:60px}
+.result-pos{color:#639922}
+.result-neg{color:#E24B4A}
+.trade-note{color:#888;flex:1;font-size:11px}
+.source-link{display:flex;align-items:center;gap:10px;padding:.5rem 0;border-bottom:1px solid #f0efeb;font-size:13px;cursor:pointer}
+.source-link:last-child{border-bottom:none}
+.source-link:hover .source-name{color:#185FA5;text-decoration:underline}
+.source-name{font-weight:500}
+.source-desc{font-size:11px;color:#888;flex:1}
+.source-tag{font-size:10px;padding:2px 7px;border-radius:5px;font-weight:500}
+.tag-early{background:#EAF3DE;color:#27500A}
+.tag-mid{background:#FAEEDA;color:#633806}
+.tag-late{background:#FCEBEB;color:#501313}
+.cal-row{display:flex;align-items:flex-start;gap:10px;padding:.5rem 0;border-bottom:1px solid #f0efeb;font-size:12px}
+.cal-row:last-child{border-bottom:none}
+.cal-date{font-weight:500;min-width:90px;color:#1a1a1a}
+.cal-event{flex:1}
+.cal-impact{padding:2px 7px;border-radius:5px;font-size:11px;font-weight:500}
+.imp-high{background:#FCEBEB;color:#501313}
+.imp-mid{background:#FAEEDA;color:#633806}
+.imp-low{background:#f0efeb;color:#666}
+.tree-node{padding:.4rem 0 .4rem 1rem;border-left:2px solid #e8e8e8;margin-left:.5rem}
+.tree-root{font-weight:600;font-size:13px;margin:.75rem 0 .25rem;border-left:none;padding-left:0;margin-left:0}
+.tree-mid{font-size:13px;color:#1a1a1a;padding:.3rem 0 .3rem 1rem}
+.tree-leaf{font-size:12px;color:#555;padding:.2rem 0 .2rem 1.5rem;border-left:2px dashed #e8e8e8}
+.tree-leaf span{color:#185FA5;font-weight:500}
+.heat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px;margin-bottom:.5rem}
+.heat-cell{border-radius:8px;padding:.6rem .75rem;font-size:12px;font-weight:500;text-align:center}
+.heat-strong{background:#EAF3DE;color:#27500A}
+.heat-ok{background:#f5f4f0;color:#555}
+.heat-weak{background:#FAEEDA;color:#633806}
+.heat-bad{background:#FCEBEB;color:#501313}
+.stat-row{display:flex;gap:12px;margin-bottom:1rem;flex-wrap:wrap}
+.stat-box{background:#f5f4f0;border-radius:8px;padding:.65rem 1rem;flex:1;min-width:100px}
+.stat-lbl{font-size:10px;color:#999;text-transform:uppercase;font-weight:600;letter-spacing:.04em}
+.stat-val{font-size:18px;font-weight:500;margin-top:3px}
+
+/* POPUP */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.popup{background:#fff;border-radius:16px;padding:1.5rem;max-width:480px;width:90%;max-height:85vh;overflow-y:auto;position:relative}
+.popup-title{font-size:16px;font-weight:600;margin-bottom:.25rem}
+.popup-sub{font-size:12px;color:#888;margin-bottom:1rem}
+.popup-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:18px;cursor:pointer;color:#888;line-height:1}
+.popup-section{margin-bottom:1rem}
+.popup-section-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#999;margin-bottom:.4rem}
+.popup-row{display:flex;justify-content:space-between;font-size:13px;padding:.3rem 0;border-bottom:1px solid #f0efeb}
+.popup-row:last-child{border-bottom:none}
+.popup-row-label{color:#777}
+.popup-row-val{font-weight:500}
+.popup-explain{font-size:13px;line-height:1.6;color:#444;margin-bottom:.75rem}
+.popup-link{display:inline-block;font-size:12px;padding:5px 12px;border:1px solid #185FA5;border-radius:8px;color:#185FA5;text-decoration:none;margin-top:.25rem;margin-right:6px}
+.popup-link:hover{background:#E6F1FB}
+.signal-box{border-radius:8px;padding:.5rem .75rem;font-size:12px;font-weight:500;margin-bottom:.5rem}
+.sig-buy{background:#EAF3DE;color:#27500A}
+.sig-wait{background:#FAEEDA;color:#633806}
+.sig-avoid{background:#FCEBEB;color:#501313}
 </style>
 </head>
 <body>
-<div class="app">
-<div class="hdr"><h1>Meal Prep Plan</h1><p>Florian &amp; Laura — Muskelaufbau &amp; Recomposition</p></div>
 
-<div class="sett">
-  <div class="sett-ttl">Körpergewicht &amp; Kalorien — Protein = 2g/kg · Trainingstage automatisch +10%</div>
-  <div class="sett-grid">
-    <div class="pc"><div class="pn f">Florian</div>
-      <div class="sr"><span class="sl">Gewicht (kg)</span><input type="range" min="70" max="120" step="1" value="95" id="fkg"><span class="sv" id="fkg-v">95 kg</span></div>
-      <div class="sr"><span class="sl">Kalorien Ø</span><input type="range" min="2200" max="3500" step="50" value="2900" id="fkc"><span class="sv" id="fkc-v">2900</span></div>
-      <div class="pi" id="f-info"></div></div>
-    <div class="pc"><div class="pn l">Laura</div>
-      <div class="sr"><span class="sl">Gewicht (kg)</span><input type="range" min="45" max="90" step="1" value="62" id="lkg"><span class="sv" id="lkg-v">62 kg</span></div>
-      <div class="sr"><span class="sl">Kalorien Ø</span><input type="range" min="1200" max="2200" step="50" value="1700" id="lkc"><span class="sv" id="lkc-v">1700</span></div>
-      <div class="pi" id="l-info"></div></div>
+<div class="topbar">
+  <span class="title">📊 Trading Brain</span>
+  <div style="display:flex;align-items:center;gap:8px">
+    <a href="https://claude.ai/chat/adc703f4-5bd6-4307-992a-b372c863cf58" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;color:#fff;font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;text-decoration:none;">🔄 Tages-Update</a>
+    <span class="date" id="today-date"></span>
   </div>
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="sv('tableau',this)">Wochentableau</button>
-  <button class="tab" onclick="sv('kochplan',this)">Kochplan Laura</button>
-  <button class="tab" onclick="sv('kalender',this)">Nachkoch-Kalender</button>
-  <button class="tab" onclick="sv('snacks',this)">Snacks Laura</button>
-  <button class="tab" onclick="sv('abend',this)">Abend Florian</button>
+  <button class="tab active" onclick="switchTab('overview',this)">Übersicht</button>
+  <button class="tab" onclick="switchTab('watchlist',this)">Watchlist</button>
+  <button class="tab" onclick="switchTab('radar',this)">Makro-Radar</button>
+  <button class="tab" onclick="switchTab('short',this)">Short-Radar</button>
+  <button class="tab" onclick="switchTab('aschenbrenner',this)">Drunter-Liegend</button>
+  <button class="tab" onclick="switchTab('heatmap',this)">Sektoren</button>
+  <button class="tab" onclick="switchTab('kalender',this)">Kalender</button>
+  <button class="tab" onclick="switchTab('journal',this)">Trade-Journal</button>
+  <button class="tab" onclick="switchTab('quellen',this)">Quellen</button>
 </div>
 
-<div id="tableau" class="view active">
-  <div class="leg">
-    <div class="li"><div class="ld" style="background:#1A7A4A"></div>Trainingstag</div>
-    <div class="li"><div class="ld" style="background:#C0BEB6"></div>Ruhetag</div>
-    <div class="li"><div class="ld" style="background:#1655A0"></div>Kochtag</div>
-    <div class="li"><div class="ld" style="background:#1A5FA8"></div>F = Florian</div>
-    <div class="li"><div class="ld" style="background:#8B4A00"></div>L = Laura</div>
-    <div class="li" style="font-size:.7rem">Gerichte anklicken → Rezept bearbeiten</div>
+<!-- ÜBERSICHT -->
+<div id="tab-overview" class="panel active">
+  <div class="grid3">
+    <div class="metric" onclick="showPopup('fg-aktien')"><div class="metric-lbl">Fear & Greed Aktien</div><div class="metric-val red">28 – Fear</div><div class="metric-hint">Tippen für Details ↗</div></div>
+    <div class="metric" onclick="showPopup('fg-krypto')"><div class="metric-lbl">Fear & Greed Krypto</div><div class="metric-val red">32 – Fear</div><div class="metric-hint">Tippen für Details ↗</div></div>
+    <div class="metric" onclick="showPopup('dxy')"><div class="metric-lbl">DXY Dollar</div><div class="metric-val red">Stark ↑</div><div class="metric-hint">Tippen für Details ↗</div></div>
+    <div class="metric" onclick="showPopup('fed')"><div class="metric-lbl">Fed-Zins</div><div class="metric-val">5,25–5,50%</div><div class="metric-hint">Tippen für Details ↗</div></div>
+    <div class="metric" onclick="showPopup('realzins')"><div class="metric-lbl">Realzins 10J</div><div class="metric-val red">+2,1%</div><div class="metric-hint">Tippen für Details ↗</div></div>
+    <div class="metric" onclick="showPopup('oel')"><div class="metric-lbl">Öl (Brent)</div><div class="metric-val amber">~$97</div><div class="metric-hint">Tippen für Details ↗</div></div>
   </div>
-  <div class="wk-nav"><button onclick="cw(-1)">← zurück</button><div class="wk-lbl" id="wlbl">Woche 1</div><button onclick="cw(1)">weiter →</button></div>
-  <div class="wk-grid" id="wgrid"></div>
-  <div class="hint">Training morgens nach Frühstück · Frühstück + M1 höher kaloriiert · F: OJ täglich · L: OJ nur Di/Do/Fr/So · Beilage immer frisch</div>
-</div>
-
-<div id="kochplan" class="view">
-  <p style="font-size:.82rem;color:#6B6960;margin-bottom:1rem">Gesamtgewicht einmal eintragen → dauerhaft gespeichert → Portionsgrößen überall sichtbar.</p>
-  <div class="sec-lbl">Wochenende 1</div>
-  <div class="kp" style="border-left:3px solid var(--blue)">
-    <div class="kp-t">Samstag — ca. 2,5h (parallel)</div><div class="kp-h">Hähnchen-Kokos-Dahl + Turkey-Bolognese</div>
-    <div class="kp-b">Dahl: 20 Port. · 45 Min · <span class="kp-lnk" onclick="oR('dahl')">→ Rezept</span><br>Bolognese: 20 Port. · 50 Min · <span class="kp-lnk" onclick="oR('bolognese')">→ Rezept</span></div>
-    <div class="wr"><span class="wl">Dahl — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-dahl" placeholder="ca. 4800"><span class="wu">g</span><span class="ws" id="ws-dahl">✓</span></div><div class="wres" id="wr-dahl"></div>
-    <div class="wr"><span class="wl">Bolognese — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-bolognese" placeholder="ca. 3600"><span class="wu">g</span><span class="ws" id="ws-bolognese">✓</span></div><div class="wres" id="wr-bolognese"></div>
+  <p class="label">Was den Markt gerade bewegt</p>
+  <div class="card">
+    <div class="row"><span class="ricon">⚡</span><div><div class="rtxt">Starke US-Jobsdaten → Fed bleibt hart → keine Zinssenkung 2026</div><div class="rsub">Drückt: Gold, Krypto, Tech-Wachstumswerte</div></div></div>
+    <div class="row"><span class="ricon">🛢</span><div><div class="rtxt">Iran-Konflikt treibt Öl auf ~$97 – Inflationsdruck bleibt hoch</div><div class="rsub">Belastet Airlines, erhöht Produktionskosten</div></div></div>
+    <div class="row"><span class="ricon">🏭</span><div><div class="rtxt">AI-Infrastruktur-Boom – Rechenzentren, Strom, Kühlung gesucht</div><div class="rsub">Aschenbrenner-These: Bitcoin-Miner als unterschätzte AI-Infrastruktur</div></div></div>
+    <div class="row"><span class="ricon">👁</span><div><div class="rtxt">Noch keiner sieht: Silber als AI-/Solar-Industrie-Metal stark unterbewertet</div><div class="rsub">Von $121 ATH auf $60 gecrasht – jetzt $76, Support bei $70</div></div></div>
   </div>
-  <div class="kp" style="border-left:3px solid var(--blue)">
-    <div class="kp-t">Sonntag — ca. 3h</div><div class="kp-h">Ofengulasch + Curryhuhn</div>
-    <div class="kp-b">Gulasch: 20 Port. · 30 Min + 2,5h Ofen · <span class="kp-lnk" onclick="oR('gulasch')">→ Rezept</span><br>Curryhuhn: 20 Port. · 50 Min · <span class="kp-lnk" onclick="oR('curryhuhn')">→ Rezept</span></div>
-    <div class="wr"><span class="wl">Gulasch — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-gulasch" placeholder="ca. 4000"><span class="wu">g</span><span class="ws" id="ws-gulasch">✓</span></div><div class="wres" id="wr-gulasch"></div>
-    <div class="wr"><span class="wl">Curryhuhn — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-curryhuhn" placeholder="ca. 2600"><span class="wu">g</span><span class="ws" id="ws-curryhuhn">✓</span></div><div class="wres" id="wr-curryhuhn"></div>
-  </div>
-  <div class="sec-lbl">Wochenende 2</div>
-  <div class="kp" style="border-left:3px solid var(--blue)">
-    <div class="kp-t">Samstag — ca. 2h</div><div class="kp-h">Stroganoff + Butter Chicken</div>
-    <div class="kp-b">Stroganoff: 20 Port. · 35 Min · <span class="kp-lnk" onclick="oR('stroganoff')">→ Rezept</span><br>Butter Chicken: 20 Port. · 45 Min · <span class="kp-lnk" onclick="oR('butterchicken')">→ Rezept</span></div>
-    <div class="wr"><span class="wl">Stroganoff — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-stroganoff" placeholder="ca. 2900"><span class="wu">g</span><span class="ws" id="ws-stroganoff">✓</span></div><div class="wres" id="wr-stroganoff"></div>
-    <div class="wr"><span class="wl">Butter Chicken — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-butterchicken" placeholder="ca. 3200"><span class="wu">g</span><span class="ws" id="ws-butterchicken">✓</span></div><div class="wres" id="wr-butterchicken"></div>
-  </div>
-  <div class="kp" style="border-left:3px solid var(--blue)">
-    <div class="kp-t">Sonntag — ca. 1h (Marinade Sa abends!)</div><div class="kp-h">Chicken Tikka Masala</div>
-    <div class="kp-b">Tikka: 20 Port. · 50 Min · <span class="kp-lnk" onclick="oR('tikka')">→ Rezept</span><br><strong>TK danach: 140 Port., 7 Sorten — System läuft</strong></div>
-    <div class="wr"><span class="wl">Tikka — Gesamtgewicht fertig</span><input class="wi" type="number" id="w-tikka" placeholder="ca. 3400"><span class="wu">g</span><span class="ws" id="ws-tikka">✓</span></div><div class="wres" id="wr-tikka"></div>
-  </div>
-  <div class="sec-lbl">Ab Woche 5 — Normalbetrieb</div>
-  <div class="kp" style="border-left:3px solid var(--grn)">
-    <div class="kp-t">Jeden Samstag — ca. 2h</div><div class="kp-h">1 Gericht nach Rotation</div>
-    <div class="kp-b">Dahl → Bolognese → Gulasch → Curryhuhn → Stroganoff → Butter Chicken → Tikka → von vorne<br>Immer 20 Portionen · Jedes Gericht hält ca. 5 Wochen</div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Mach mir ein vollständiges Markt-Briefing für heute')">Vollständiges Briefing</button>
+    <button class="btn" onclick="cp('Was liegt unter dem aktuellen KI-Boom noch verborgen?')">Drunter-Liegendes</button>
+    <button class="btn" onclick="cp('Welche Werte stehen gerade an starken historischen Support-Levels?')">Support-Scanner</button>
+    <button class="btn" onclick="cp('Aktualisiere alle Daten im Trading Brain Dashboard für heute')">Alles aktualisieren</button>
   </div>
 </div>
 
-<div id="kalender" class="view">
-  <div class="wk-nav"><button onclick="cw(-1)">← zurück</button><div class="wk-lbl" id="wlbl2">Woche 1</div><button onclick="cw(1)">weiter →</button></div>
-  <table class="kal-t"><thead><tr><th>Woche</th><th>Samstag — Laura kocht</th><th>Portionen übrig</th></tr></thead><tbody id="kbody"></tbody></table>
+<!-- WATCHLIST -->
+<div id="tab-watchlist" class="panel">
+  <p class="label">Meine Watchlist <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#bbb;font-size:11px">— Eigene Werte hinzufügen oder anklicken für Details</span></p>
+
+  <!-- Eigene Watchlist -->
+  <div class="card" style="margin-bottom:1rem">
+    <div class="form-row" style="margin-bottom:8px">
+      <input type="text" id="wl-ticker" placeholder="Ticker / Name (z.B. Gold, IREN, BTC)" style="margin-bottom:0">
+      <input type="text" id="wl-note" placeholder="Notiz (z.B. Kaufzone $70, AI-Infra)" style="margin-bottom:0">
+    </div>
+    <div class="form-row">
+      <select id="wl-signal" style="margin-bottom:0">
+        <option value="watch">Beobachten</option>
+        <option value="buy">Kaufzone</option>
+        <option value="wait">Abwarten</option>
+        <option value="avoid">Finger weg</option>
+      </select>
+      <button class="btn btn-primary" onclick="addWatchlistItem()" style="margin:0">+ Hinzufügen</button>
+    </div>
+  </div>
+  <div id="wl-user-items"></div>
+
+  <p class="label">Standard-Watchlist <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#bbb;font-size:11px">— Karte anklicken für Chart & Details</span></p>
+  <p class="label">Rohstoffe</p>
+  <div class="grid2">
+    <div class="asset-card" onclick="showPopup('gold')"><span class="badge b-warn">Korrektur läuft</span><div class="aname">Gold (XAU/USD)</div><div class="aprice">~$4.450</div><div class="ameta">Kaufzone: $3.800–4.000<br>Resistenz: $4.800–5.000</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('silber')"><span class="badge b-ok">Interessant</span><div class="aname">Silber (XAG/USD)</div><div class="aprice">~$76</div><div class="ameta">Kaufzone: $68–72<br>Resistenz: $85–90</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('oel')"><span class="badge b-danger">Kein Einstieg</span><div class="aname">Öl (Brent)</div><div class="aprice">~$97</div><div class="ameta">Kaufzone: $70–75<br>Resistenz: $100–105</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('kupfer')"><span class="badge b-neutral">Beobachten</span><div class="aname">Kupfer (HG)</div><div class="aprice">–</div><div class="ameta">AI-/EV-Infrastruktur-Metal<br>Strukturelle Nachfrage</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('uran')"><span class="badge b-neutral">Beobachten</span><div class="aname">Uran (UX1)</div><div class="aprice">–</div><div class="ameta">Kernkraft für AI-Strom<br>Narrativ früh</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+  </div>
+  <p class="label">Aktien</p>
+  <div class="grid2">
+    <div class="asset-card" onclick="showPopup('lha')"><span class="badge b-neutral">Abwarten</span><div class="aname">Lufthansa (LHA)</div><div class="aprice">~8,40 €</div><div class="ameta">Kaufzone: 6,40–7,00 €<br>Verkauf: 12–14 €</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('ko')"><span class="badge b-warn">Beobachten</span><div class="aname">Coca-Cola (KO)</div><div class="aprice">~$79,58</div><div class="ameta">Kaufzone: $72–75<br>ATH: $81,92</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('pypl')"><span class="badge b-warn">Warten</span><div class="aname">PayPal (PYPL)</div><div class="aprice">KGV ~8</div><div class="ameta">Abwärtstrend läuft<br>Zahlen Ende Juli</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('miner')"><span class="badge b-neutral">Beobachten</span><div class="aname">IREN / CleanSpark</div><div class="aprice">–</div><div class="ameta">Bitcoin-Miner als AI-Infra<br>Aschenbrenner-These</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('bloom')"><span class="badge b-neutral">Beobachten</span><div class="aname">Bloom Energy (BE)</div><div class="aprice">–</div><div class="ameta">Strom für Rechenzentren<br>Drunter-Liegend AI</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+  </div>
+  <p class="label">Krypto</p>
+  <div class="grid2">
+    <div class="asset-card" onclick="showPopup('btc')"><span class="badge b-warn">Kritische Zone</span><div class="aname">Bitcoin (BTC)</div><div class="aprice">~$60.000</div><div class="ameta">Kaufzone: $55–60k<br>Resistenz: $73–75k</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('eth')"><span class="badge b-neutral">Beobachten</span><div class="aname">Ethereum (ETH)</div><div class="aprice">–</div><div class="ameta">Plattform-Asset<br>Folgt BTC-Trend</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+    <div class="asset-card" onclick="showPopup('ada')"><span class="badge b-danger">Finger weg</span><div class="aname">Cardano (ADA)</div><div class="aprice">~0,14 €</div><div class="ameta">5-Jahres-Tief<br>Fundamental kaputt</div><div class="chart-hint">📈 Chart & Analyse öffnen ↗</div></div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Analysiere meine Watchlist – welche Werte haben gerade das beste Chance/Risiko-Verhältnis für einen Einstieg?')">Watchlist analysieren</button>
+    <button class="btn" onclick="cp('Welche Werte sollte ich neu auf meine Watchlist nehmen basierend auf dem aktuellen Marktumfeld?')">Neue Vorschläge</button>
+    <button class="btn" onclick="cp('Analysiere Silber genau – ist der Support bei $70 stabil?')">Silber vertiefen</button>
+    <button class="btn" onclick="cp('Bitcoin bei $60k – kaufen, warten oder meiden?')">Bitcoin analysieren</button>
+  </div>
 </div>
 
-<div id="snacks" class="view">
-  <p style="font-size:.82rem;color:#6B6960;margin-bottom:1rem">Täglich rotieren. Anklicken zum Bearbeiten der Zutaten — wird gespeichert.</p>
-  <div class="sn-grid" id="sgrid"></div>
+<div id="tab-radar" class="panel">
+  <p class="label">Makro-Indikatoren <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#bbb;font-size:11px">— Zeile anklicken für Details</span></p>
+  <div class="card">
+    <div class="radar-row" onclick="showPopup('realzins')"><span class="radar-label">Realzins 10J USA</span><span class="radar-val red">+2,1%</span><div class="bar-wrap"><div class="bar-fill" style="width:80%;background:#E24B4A"></div></div><span class="radar-sig">Hoch → Druck auf Gold & Krypto ↗</span></div>
+    <div class="radar-row" onclick="showPopup('fed')"><span class="radar-label">Fed Funds Rate</span><span class="radar-val">5,25–5,50%</span><div class="bar-wrap"><div class="bar-fill" style="width:75%;background:#BA7517"></div></div><span class="radar-sig">Keine Senkung in Sicht ↗</span></div>
+    <div class="radar-row" onclick="showPopup('cpi')"><span class="radar-label">CPI Inflation USA</span><span class="radar-val">~3,4%</span><div class="bar-wrap"><div class="bar-fill" style="width:55%;background:#BA7517"></div></div><span class="radar-sig">Über Fed-Ziel (2%) ↗</span></div>
+    <div class="radar-row" onclick="showPopup('dxy')"><span class="radar-label">DXY Dollar-Index</span><span class="radar-val red">Stark</span><div class="bar-wrap"><div class="bar-fill" style="width:70%;background:#E24B4A"></div></div><span class="radar-sig">Drückt Gold & Krypto ↗</span></div>
+    <div class="radar-row" onclick="showPopup('fg-aktien')"><span class="radar-label">Fear & Greed Aktien</span><span class="radar-val red">28</span><div class="bar-wrap"><div class="bar-fill" style="width:28%;background:#639922"></div></div><span class="radar-sig">Unter 25 = Kaufzone in Sicht ↗</span></div>
+    <div class="radar-row" onclick="showPopup('fg-krypto')"><span class="radar-label">Fear & Greed Krypto</span><span class="radar-val red">32</span><div class="bar-wrap"><div class="bar-fill" style="width:32%;background:#639922"></div></div><span class="radar-sig">Unter 20 = extreme Kaufzone ↗</span></div>
+    <div class="radar-row" onclick="showPopup('gold-silber-ratio')"><span class="radar-label">Gold/Silber-Ratio</span><span class="radar-val">~58:1</span><div class="bar-wrap"><div class="bar-fill" style="width:60%;background:#185FA5"></div></div><span class="radar-sig">Historisch hoch → Silber günstig ↗</span></div>
+    <div class="radar-row" onclick="showPopup('oel')"><span class="radar-label">Öl (Brent)</span><span class="radar-val amber">~$97</span><div class="bar-wrap"><div class="bar-fill" style="width:65%;background:#BA7517"></div></div><span class="radar-sig">Iran-Risiko + OPEC-Erhöhung ↗</span></div>
+    <div class="radar-row" onclick="showPopup('m2')"><span class="radar-label">M2 Geldmenge USA</span><span class="radar-val amber">Wächst</span><div class="bar-wrap"><div class="bar-fill" style="width:55%;background:#BA7517"></div></div><span class="radar-sig">Langfristig inflationär ↗</span></div>
+    <div class="radar-row" onclick="showPopup('bdi')"><span class="radar-label">Baltic Dry Index</span><span class="radar-val">–</span><div class="bar-wrap"><div class="bar-fill" style="width:40%;background:#888"></div></div><span class="radar-sig">Frühindikator Welthandel ↗</span></div>
+  </div>
+  <p class="label">Narrativ-Zyklus Check</p>
+  <div class="card">
+    <div class="row"><span class="dot dot-red"></span><div class="rtxt"><strong>Gold</strong> – Mainstream. Alle sehen's. Überkauft. Kein Neueinstieg.</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="rtxt"><strong>Nvidia / AI-Chips</strong> – Mainstream. Eingepreist. Schaue drunter.</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="rtxt"><strong>AI-Infrastruktur (Rechenzentren)</strong> – Halb-Mainstream. Noch Upside möglich.</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="rtxt"><strong>Bitcoin-Miner als AI-Play</strong> – Wird bekannter, noch nicht eingepreist.</div></div>
+    <div class="row"><span class="dot dot-green"></span><div class="rtxt"><strong>Silber als Industrie-Metal</strong> – Früh. Noch nicht gesehen.</div></div>
+    <div class="row"><span class="dot dot-green"></span><div class="rtxt"><strong>Uran / Kernkraft für AI-Strom</strong> – Früh. Wächst langsam.</div></div>
+    <div class="row"><span class="dot dot-green"></span><div class="rtxt"><strong>Kupfer für EV + AI-Infrastruktur</strong> – Sehr früh. Strukturelle Nachfrage.</div></div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Aktualisiere den Makro-Radar mit den neuesten verfügbaren Daten von FRED, Fear & Greed und anderen Quellen')">Radar aktualisieren</button>
+    <button class="btn" onclick="cp('Welche Makro-Entwicklung könnte den Markt in den nächsten 3 Monaten am stärksten bewegen?')">Makro-Ausblick</button>
+    <button class="btn" onclick="cp('Wie ist der aktuelle Stand des Dalio Schulden-Zyklus und was bedeutet das für meine Assets?')">Dalio-Zyklus</button>
+  </div>
 </div>
 
-<div id="abend" class="view">
-  <p style="font-size:.82rem;color:#6B6960;margin-bottom:1rem">Feste Rotation Mo–So. Anklicken zum Bearbeiten der Mengen — wird gespeichert. KH immer dabei.</p>
-  <div class="sn-grid" id="fgrid"></div>
+<!-- SHORT-RADAR -->
+<div id="tab-short" class="panel">
+  <p class="label">Short-Kandidaten (Inverse ETF)</p>
+  <div class="card">
+    <div class="row"><span class="ricon">📉</span><div><div class="rtxt"><strong>Gold – Korrektur läuft</strong></div><div class="rsub">RSI überkauft · Realzinsen steigen · DXY stark<br>Produkt: WisdomTree Short Gold · Ziel: $4.000</div></div></div>
+    <div class="row"><span class="ricon">📉</span><div><div class="rtxt"><strong>Nasdaq – Tech unter Zinsdruck</strong></div><div class="rsub">Wachstumswerte leiden bei hohen Zinsen<br>Produkt: ProShares Short QQQ (PSQ)</div></div></div>
+    <div class="row"><span class="ricon">⏳</span><div><div class="rtxt"><strong>Bitcoin – noch kein Short-Signal</strong></div><div class="rsub">An Support-Zone · abwarten · erst unter $55k Short sinnvoll</div></div></div>
+    <div class="row"><span class="ricon">⏳</span><div><div class="rtxt"><strong>Öl – geopolitisch unberechenbar</strong></div><div class="rsub">Erst Short wenn Iran-Risiko nachlässt<br>Produkt: WisdomTree Short Crude Oil</div></div></div>
+  </div>
+  <p class="label">Produkt-Übersicht</p>
+  <div class="card">
+    <div class="radar-row"><span class="radar-label">Gold fällt</span><span class="radar-val">WisdomTree Short Gold</span><span class="radar-sig" style="color:#555">Ticker: XGO2</span></div>
+    <div class="radar-row"><span class="radar-label">Silber fällt</span><span class="radar-val">WisdomTree Short Silver</span><span class="radar-sig" style="color:#555">Ticker: SSIL</span></div>
+    <div class="radar-row"><span class="radar-label">Öl fällt</span><span class="radar-val">WisdomTree Short Crude Oil</span><span class="radar-sig" style="color:#555">Ticker: SOIL</span></div>
+    <div class="radar-row"><span class="radar-label">S&P 500 fällt</span><span class="radar-val">ProShares Short S&P500</span><span class="radar-sig" style="color:#555">Ticker: SH</span></div>
+    <div class="radar-row"><span class="radar-label">Nasdaq fällt</span><span class="radar-val">ProShares Short QQQ</span><span class="radar-sig" style="color:#555">Ticker: PSQ</span></div>
+    <div class="radar-row"><span class="radar-label">DAX fällt</span><span class="radar-val">Xtrackers ShortDAX</span><span class="radar-sig" style="color:#555">Ticker: XSDX</span></div>
+    <div class="radar-row"><span class="radar-label">Bitcoin fällt</span><span class="radar-val">21Shares Short Bitcoin ETP</span><span class="radar-sig" style="color:#555">Ticker: SBTC</span></div>
+  </div>
+  <p class="label" style="color:#E24B4A">Eiserne Regeln</p>
+  <div class="card" style="border-color:#f09595">
+    <div class="row"><span>⏱</span><div class="rtxt">Max. 4 Wochen Haltedauer (Decay-Effekt)</div></div>
+    <div class="row"><span>🚫</span><div class="rtxt">Kein Hebel – niemals 2x/3x Varianten</div></div>
+    <div class="row"><span>✅</span><div class="rtxt">Gleiche Einstiegs-Checkliste wie bei Long-Trades</div></div>
+    <div class="row"><span>🛑</span><div class="rtxt">Stop-Loss immer vor Einstieg definieren</div></div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Analysiere Gold Short gerade – lohnt sich ein Einstieg mit WisdomTree Short Gold?')">Gold Short analysieren</button>
+    <button class="btn" onclick="cp('Welche Werte sind technisch überkauft und Short-Kandidaten diese Woche?')">Short-Scanner</button>
+  </div>
 </div>
 
+<!-- ASCHENBRENNER -->
+<div id="tab-aschenbrenner" class="panel">
+  <p class="label">Themen-Baum: Hype → Was liegt drunter?</p>
+  <div class="card">
+    <div class="tree-root">🤖 Hype: Künstliche Intelligenz / ChatGPT / Nvidia</div>
+    <div class="tree-node">
+      <div class="tree-mid">▸ Schicht 1: AI-Chips (Nvidia, AMD) — <span style="color:#E24B4A">schon eingepreist</span></div>
+      <div class="tree-node">
+        <div class="tree-mid">▸ Schicht 2: Rechenzentren</div>
+        <div class="tree-leaf">▸ Strom → <span>Bitcoin-Miner (IREN, CleanSpark, Riot)</span></div>
+        <div class="tree-leaf">▸ Strom → <span>Bloom Energy, Constellation Energy</span></div>
+        <div class="tree-leaf">▸ Kühlung → <span>Vertiv Holdings (VRT)</span></div>
+        <div class="tree-leaf">▸ Kupferkabel → <span>Prysmian, Nexans</span></div>
+      </div>
+      <div class="tree-node">
+        <div class="tree-mid">▸ Schicht 3: Strom-Erzeugung</div>
+        <div class="tree-leaf">▸ Kernkraft → <span>Cameco, Kazatomprom (Uran)</span></div>
+        <div class="tree-leaf">▸ Gas → <span>LNG-Infrastruktur</span></div>
+      </div>
+    </div>
+    <div class="tree-root" style="margin-top:1rem">⚡ Hype: Goldpreis auf Allzeithoch</div>
+    <div class="tree-node">
+      <div class="tree-mid">▸ Direkt: Gold-ETFs — <span style="color:#E24B4A">überkauft</span></div>
+      <div class="tree-node">
+        <div class="tree-mid">▸ Goldminen — <span style="color:#BA7517">teuer</span></div>
+        <div class="tree-leaf">▸ Günstiger → <span>Silberminen (Gold/Silber-Ratio hoch)</span></div>
+        <div class="tree-leaf">▸ Silber selbst → <span>Industrie + Edelmetall-Hedge</span></div>
+      </div>
+    </div>
+    <div class="tree-root" style="margin-top:1rem">🚗 Hype: Elektroautos</div>
+    <div class="tree-node">
+      <div class="tree-mid">▸ EV-Hersteller — <span style="color:#E24B4A">volatile, eingepreist</span></div>
+      <div class="tree-node">
+        <div class="tree-leaf">▸ Lithium → <span>Albemarle, SQM (stark gefallen)</span></div>
+        <div class="tree-leaf">▸ Kupfer → <span>strukturell steigende Nachfrage</span></div>
+      </div>
+    </div>
+    <div class="tree-root" style="margin-top:1rem">🛡 Hype: Rüstungsausgaben Europa</div>
+    <div class="tree-node">
+      <div class="tree-mid">▸ Rüstungsaktien (Rheinmetall) — <span style="color:#BA7517">teils eingepreist</span></div>
+      <div class="tree-node">
+        <div class="tree-leaf">▸ Stahl, Titan → <span>Zulieferer noch günstig</span></div>
+        <div class="tree-leaf">▸ Logistik → <span>unterschätzt</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Welche Firmen profitieren konkret vom AI-Strom-Bedarf und sind noch nicht eingepreist?')">AI-Strom vertiefen</button>
+    <button class="btn" onclick="cp('Analysiere Uran als Investment – Fundamentaldaten, Angebot, Nachfrage')">Uran analysieren</button>
+    <button class="btn" onclick="cp('Welches neue große Thema könnte in den nächsten 12 Monaten entstehen und was liegt darunter?')">Nächstes Thema</button>
+  </div>
 </div>
-<div class="ov" id="ov" onclick="cib(event)"><div class="pp" id="pp"></div></div>
+
+<!-- HEATMAP -->
+<div id="tab-heatmap" class="panel">
+  <p class="label">Sektoren-Überblick (Stand: Juni 2026)</p>
+  <div class="heat-grid">
+    <div class="heat-cell heat-strong">🏭 Rüstung<br><small>Stark</small></div>
+    <div class="heat-cell heat-strong">⚡ Energie<br><small>Stark</small></div>
+    <div class="heat-cell heat-strong">🤖 AI-Infra<br><small>Stark</small></div>
+    <div class="heat-cell heat-ok">💊 Gesundheit<br><small>Neutral</small></div>
+    <div class="heat-cell heat-ok">🏦 Banken<br><small>Neutral</small></div>
+    <div class="heat-cell heat-ok">🛒 Konsum<br><small>Neutral</small></div>
+    <div class="heat-cell heat-weak">✈️ Airlines<br><small>Schwach</small></div>
+    <div class="heat-cell heat-weak">🏠 Immobilien<br><small>Schwach</small></div>
+    <div class="heat-cell heat-bad">💻 Tech-Growth<br><small>Unter Druck</small></div>
+    <div class="heat-cell heat-bad">₿ Krypto<br><small>Unter Druck</small></div>
+    <div class="heat-cell heat-weak">🚗 Autos<br><small>Schwach</small></div>
+    <div class="heat-cell heat-ok">🌾 Agrar<br><small>Neutral</small></div>
+  </div>
+  <p class="label">Treiber</p>
+  <div class="card">
+    <div class="row"><span style="color:#639922;font-weight:600;min-width:100px;font-size:12px">STARK</span><div class="rtxt">Rüstung: NATO-Ausgaben. Energie: Öl-Konflikt + AI-Strombedarf. AI-Infra: Rechenzentrum-Boom.</div></div>
+    <div class="row"><span style="color:#BA7517;font-weight:600;min-width:100px;font-size:12px">SCHWACH</span><div class="rtxt">Airlines: Öl belastet Margen. Immobilien: hohe Zinsen. Tech-Growth: Zinsdruck auf Bewertungen.</div></div>
+    <div class="row"><span style="color:#E24B4A;font-weight:600;min-width:100px;font-size:12px">CHANCE</span><div class="rtxt">Airlines bei Ölpreisrückgang. Immobilien bei erster Zinssenkung. Krypto bei Fear &lt; 20.</div></div>
+  </div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Welche Sektoren sind gerade am interessantesten für einen Swing-Trade Einstieg?')">Sektor-Analyse</button>
+    <button class="btn" onclick="cp('Aktualisiere die Sektor-Heatmap mit den neuesten Marktdaten')">Heatmap aktualisieren</button>
+  </div>
+</div>
+
+<!-- KALENDER -->
+<div id="tab-kalender" class="panel">
+  <p class="label">Nächste wichtige Termine</p>
+  <div class="card">
+    <div class="cal-row"><span class="cal-date">12. Juni 2026</span><div class="cal-event"><div class="rtxt">US CPI Inflationsdaten (Mai)</div><div class="rsub">Höher als erwartet → Fed bleibt hart → Gold/Krypto fallen</div></div><span class="cal-impact imp-high">Hoch</span></div>
+    <div class="cal-row"><span class="cal-date">18. Juni 2026</span><div class="cal-event"><div class="rtxt">Fed-Sitzung / FOMC Statement</div><div class="rsub">Zinsentscheidung + Ausblick – bewegt alle Märkte</div></div><span class="cal-impact imp-high">Hoch</span></div>
+    <div class="cal-row"><span class="cal-date">25. Juni 2026</span><div class="cal-event"><div class="rtxt">US BIP Q1 Revision</div><div class="rsub">Wachstumsdaten – Rezessions-Check</div></div><span class="cal-impact imp-mid">Mittel</span></div>
+    <div class="cal-row"><span class="cal-date">Ende Juli 2026</span><div class="cal-event"><div class="rtxt">PayPal Quartalszahlen (Q2)</div><div class="rsub">Wegweiser für Trendwende oder weiteren Abwärtstrend</div></div><span class="cal-impact imp-high">Hoch</span></div>
+    <div class="cal-row"><span class="cal-date">Laufend</span><div class="cal-event"><div class="rtxt">OPEC+ Fördermengenbeschlüsse</div><div class="rsub">Direkt relevant für Öl-Position</div></div><span class="cal-impact imp-mid">Mittel</span></div>
+  </div>
+  <p class="label">Eigene Termine</p>
+  <div class="card">
+    <div class="form-row3">
+      <input type="date" id="cal-date-input">
+      <input type="text" id="cal-event-input" placeholder="Ereignis">
+      <select id="cal-impact-input"><option value="high">Hohe Relevanz</option><option value="mid">Mittlere</option><option value="low">Niedrige</option></select>
+    </div>
+    <input type="text" id="cal-note-input" placeholder="Notiz / Bedeutung für dein Portfolio">
+    <button class="btn btn-primary" onclick="addCalEntry()">Termin hinzufügen</button>
+  </div>
+  <div id="cal-user-entries"></div>
+  <div style="margin-top:1rem">
+    <button class="btn" onclick="cp('Was sind die wichtigsten wirtschaftlichen Termine in den nächsten 4 Wochen die mein Portfolio beeinflussen könnten?')">Kalender aktualisieren</button>
+  </div>
+</div>
+
+<!-- JOURNAL -->
+<div id="tab-journal" class="panel">
+  <p class="label">Trade erfassen</p>
+  <div class="card">
+    <div class="form-row">
+      <input type="text" id="j-asset" placeholder="Asset (z.B. Gold, BTC, LHA)">
+      <select id="j-dir"><option value="long">Long (Kauf)</option><option value="short">Short (Inverse ETF)</option></select>
+    </div>
+    <div class="form-row">
+      <input type="text" id="j-entry" placeholder="Einstiegskurs">
+      <input type="text" id="j-exit" placeholder="Ausstiegskurs (leer = offen)">
+    </div>
+    <div class="form-row">
+      <input type="date" id="j-date">
+      <input type="text" id="j-size" placeholder="Positionsgröße (€)">
+    </div>
+    <textarea id="j-reason" placeholder="Begründung: Warum dieser Trade? (Technisch, Fundamental, Makro)"></textarea>
+    <textarea id="j-lesson" placeholder="Learnings (nach Abschluss): Was hat funktioniert / nicht?"></textarea>
+    <button class="btn btn-primary" onclick="addTrade()">Trade speichern</button>
+  </div>
+  <p class="label">Trade-Historie</p>
+  <div class="card" id="journal-list"><div style="color:#888;font-size:13px;text-align:center;padding:1rem">Noch keine Trades.</div></div>
+  <p class="label">Statistiken</p>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-lbl">Trades</div><div class="stat-val" id="stat-count">0</div></div>
+    <div class="stat-box"><div class="stat-lbl">Gewinner</div><div class="stat-val green" id="stat-win">0</div></div>
+    <div class="stat-box"><div class="stat-lbl">Verlierer</div><div class="stat-val red" id="stat-loss">0</div></div>
+    <div class="stat-box"><div class="stat-lbl">Win-Rate</div><div class="stat-val" id="stat-wr">–</div></div>
+  </div>
+  <button class="btn btn-danger" onclick="if(confirm('Alle Trades löschen?')){localStorage.removeItem('trades');renderJournal()}">Journal leeren</button>
+  <button class="btn" onclick="cp('Analysiere meine letzten Trades und gib mir Feedback zu meiner Strategie')">Trades analysieren</button>
+</div>
+
+<!-- QUELLEN -->
+<div id="tab-quellen" class="panel">
+  <p class="label">Früh-Indikatoren</p>
+  <div class="card">
+    <div class="source-link" onclick="window.open('https://fred.stlouisfed.org','_blank')"><div><div class="source-name">FRED – Federal Reserve Economic Data</div><div class="source-desc">M2 Geldmenge, Realzinsen, CPI, Arbeitsmarkt</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://macromicro.me','_blank')"><div><div class="source-name">MacroMicro</div><div class="source-desc">Makrodaten visuell – schneller Überblick</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://13f.info','_blank')"><div><div class="source-name">13F.info – Hedgefonds-Positionen</div><div class="source-desc">Was kauft Aschenbrenner & Co. quartalsweise?</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://glassnode.com','_blank')"><div><div class="source-name">Glassnode – On-Chain Analytics</div><div class="source-desc">Bitcoin/Krypto On-Chain Daten</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://situational-awareness.ai','_blank')"><div><div class="source-name">Situational Awareness – Aschenbrenner</div><div class="source-desc">AGI-These, Infrastruktur-Investment-Logik</div></div><span class="source-tag tag-early">Früh</span></div>
+  </div>
+  <p class="label">Aktuelle Marktdaten</p>
+  <div class="card">
+    <div class="source-link" onclick="window.open('https://www.tradingview.com','_blank')"><div><div class="source-name">TradingView</div><div class="source-desc">Charts, Support/Resistenz – deine Hauptplattform</div></div><span class="source-tag tag-mid">Markt</span></div>
+    <div class="source-link" onclick="window.open('https://finviz.com','_blank')"><div><div class="source-name">Finviz – Screener & Heatmap</div><div class="source-desc">Sektor-Heatmap, Screener nach KGV/Trend</div></div><span class="source-tag tag-mid">Markt</span></div>
+    <div class="source-link" onclick="window.open('https://alternative.me/crypto/fear-and-greed-index/','_blank')"><div><div class="source-name">Krypto Fear & Greed Index</div><div class="source-desc">Unter 20 = extreme Angst = historische Kaufzone</div></div><span class="source-tag tag-mid">Markt</span></div>
+    <div class="source-link" onclick="window.open('https://money.cnn.com/data/fear-and-greed/','_blank')"><div><div class="source-name">CNN Fear & Greed (Aktien)</div><div class="source-desc">Sentiment-Indikator breiter Aktienmarkt</div></div><span class="source-tag tag-mid">Markt</span></div>
+  </div>
+  <p class="label">Fundamentaldaten</p>
+  <div class="card">
+    <div class="source-link" onclick="window.open('https://www.gold.org','_blank')"><div><div class="source-name">World Gold Council</div><div class="source-desc">Goldnachfrage, Zentralbankkäufe, ETF-Zuflüsse</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://www.iea.org','_blank')"><div><div class="source-name">IEA – International Energy Agency</div><div class="source-desc">Öl-Angebot/Nachfrage, Energiemarkt-Prognosen</div></div><span class="source-tag tag-early">Früh</span></div>
+    <div class="source-link" onclick="window.open('https://www.sec.gov/cgi-bin/browse-edgar','_blank')"><div><div class="source-name">SEC EDGAR</div><div class="source-desc">Offizielle US-Quartalsberichte, 10-K, 10-Q</div></div><span class="source-tag tag-mid">Fundamental</span></div>
+  </div>
+  <p class="label">Zu spät</p>
+  <div class="card"><div class="row"><span style="color:#E24B4A">⚠</span><div class="rtxt" style="color:#888">Bloomberg, Reuters, Spiegel Finanzen — gut zur Bestätigung, aber meist schon eingepreist wenn es dort steht.</div></div></div>
+</div>
+
+<!-- POPUP OVERLAY -->
+<div class="overlay" id="overlay" onclick="closePopupOnBg(event)">
+  <div class="popup" id="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <div id="popup-content"></div>
+  </div>
+</div>
 
 <script>
-var ST={fKg:95,fKc:2900,lKg:62,lKc:1700,week:1};
-var WTS={dahl:0,bolognese:0,gulasch:0,curryhuhn:0,stroganoff:0,butterchicken:0,tikka:0};
-var DW={dahl:4800,bolognese:3600,gulasch:4000,curryhuhn:2600,stroganoff:2900,butterchicken:3200,tikka:3400};
-var ROT=["dahl","bolognese","gulasch","curryhuhn","stroganoff","butterchicken","tikka"];
-var RN={dahl:"Hähnchen-Kokos-Dahl",bolognese:"Turkey-Bolognese",gulasch:"Ofengulasch",curryhuhn:"Curryhuhn",stroganoff:"Stroganoff",butterchicken:"Butter Chicken",tikka:"Tikka Masala"};
-var OJkc=88,OJp=1,TKkc=295,TKp=33,TKf=9,TLkc=221,TLp=25,TLf=7;
-var BK={Reis:1.30,Nudeln:1.30,Kartoffeln:0.77};
-var PLAN=[
-  {tag:"Montag",   cls:"re",b:"Reis",      g1:"dahl",       g2:"butterchicken",fr:"porridge",   lOJ:false},
-  {tag:"Dienstag", cls:"re",b:"Nudeln",    g1:"bolognese",  g2:"stroganoff",   fr:"ruehrei",    lOJ:true},
-  {tag:"Mittwoch", cls:"tr",b:"Reis",      g1:"curryhuhn",  g2:"tikka",        fr:"porridge",   lOJ:false},
-  {tag:"Donnerstag",cls:"tr",b:"Kartoffeln",g1:"gulasch",   g2:"dahl",         fr:"ruehrei",    lOJ:true},
-  {tag:"Freitag",  cls:"tr",b:"Nudeln",    g1:"stroganoff", g2:"bolognese",    fr:"pfannkuchen",lOJ:true},
-  {tag:"Samstag",  cls:"ko",b:"Reis",      g1:"tikka",      g2:"curryhuhn",    fr:"porridge",   lOJ:false,kochtag:true},
-  {tag:"Sonntag",  cls:"tr",b:"Kartoffeln",g1:"gulasch",    g2:"butterchicken",fr:"pfannkuchen",lOJ:true}
-];
+document.getElementById('today-date').textContent = new Date().toLocaleDateString('de-DE',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-// Editierbare Rezept-Defaults (Makros per Einheit)
-var REC={
-  porridge:{name:"Porridge light + OJ",steps:["Haferflocken, Whey + 100ml Wasser erhitzen. Rühren.","Hafermilch dazu wenn andickt, kurz aufkochen.","Erdbeeren 2:30 Min Mikrowelle. Apfel würfeln.","Walnüsse + Früchte drauf. OJ separat trinken."],tip:"F: OJ täglich. L: OJ nur Di/Do/Fr/So.",
-    ing:[{n:"Haferflocken zart",v:40,u:"g",kc:1.50,p:0.130,f:0.030,k:0.280},
-         {n:"Whey Protein",v:40,u:"g",kc:4.00,p:0.800,f:0.050,k:0.050},
-         {n:"Walnüsse",v:20,u:"g",kc:6.50,p:0.150,f:0.650,k:0.140},
-         {n:"Hafermilch",v:35,u:"ml",kc:0.46,p:0.010,f:0.020,k:0.070},
-         {n:"Erdbeeren TK",v:120,u:"g",kc:0.32,p:0.007,f:0.003,k:0.077},
-         {n:"Apfel",v:60,u:"g",kc:0.52,p:0.003,f:0.002,k:0.138},
-         {n:"Orangensaft",v:200,u:"ml",kc:0.44,p:0.007,f:0.002,k:0.100}]},
-  ruehrei:{name:"Rührei + Toast + OJ",steps:["Eier + Eiklar verquirlen, würzen.","Optional Spinat/Tomaten/Pilze rein.","Pfanne mittlere Hitze, goldbraun stocken.","Toast parallel. OJ dazu trinken."],tip:"Vitamin C aus OJ verbessert Eisenaufnahme. L: nur 1 Scheibe Toast.",
-    ing:[{n:"Eier M",v:2,u:"Stk",kc:74,p:6.3,f:5.3,k:0.4},
-         {n:"Eiklar",v:150,u:"g",kc:0.52,p:0.110,f:0.001,k:0.007},
-         {n:"Vollkorntoast",v:2,u:"Schb.",kc:90,p:3.5,f:1.0,k:16.0},
-         {n:"Orangensaft",v:200,u:"ml",kc:0.44,p:0.007,f:0.002,k:0.100}]},
-  pfannkuchen:{name:"Pfannkuchen (Protein) + OJ",steps:["Alle Zutaten (außer OJ) mischen.","Mit Handmixer glatt rühren.","Pfanne fetten, mittlere Hitze, goldbraun backen.","L: alle Mengen halbieren. OJ separat."],tip:"65g Mehl — nicht 80g! Magerquark als Topping: +11g Protein.",
-    ing:[{n:"Ei M",v:1,u:"Stk",kc:74,p:6.3,f:5.3,k:0.4},
-         {n:"Mehl",v:65,u:"g",kc:3.40,p:0.100,f:0.010,k:0.710},
-         {n:"Whey Protein",v:50,u:"g",kc:4.00,p:0.800,f:0.050,k:0.050},
-         {n:"Hafermilch",v:114,u:"ml",kc:0.46,p:0.010,f:0.020,k:0.070},
-         {n:"Sprudelwasser",v:34,u:"ml",kc:0,p:0,f:0,k:0},
-         {n:"Orangensaft",v:200,u:"ml",kc:0.44,p:0.007,f:0.002,k:0.100}]},
-  shake:{name:"Shake — Whey + Zerealien + Walnüsse",steps:["Whey + 250ml Wasser oder Milch shaken.","Zerealien + Walnüsse separat in Schüssel.","Zusammen oder getrennt essen."],tip:"Walnüsse geben Omega-3. Zerealien für schnelle KH nach dem Training.",
-    ing:[{n:"Whey Protein",v:40,u:"g",kc:4.00,p:0.800,f:0.050,k:0.050},
-         {n:"Zerealien",v:40,u:"g",kc:4.00,p:0.100,f:0.025,k:0.850},
-         {n:"Walnüsse",v:30,u:"g",kc:6.50,p:0.150,f:0.650,k:0.140}]}
+function switchTab(name,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+}
+
+function cp(text){
+  navigator.clipboard.writeText(text).catch(()=>{});
+  alert('In Zwischenablage kopiert:\n\n'+text);
+}
+
+function closePopup(){document.getElementById('overlay').classList.remove('open')}
+function closePopupOnBg(e){if(e.target===document.getElementById('overlay'))closePopup()}
+
+var popups = {
+  'fg-aktien': {
+    title:'Fear & Greed Index (Aktien)',
+    sub:'CNN Money · Aktuell: 28 – Fear',
+    signal:'sig-wait',
+    signalText:'⚠ Abwarten – unter 25 wird es interessant',
+    explain:'Der Index misst das aktuelle Markt-Sentiment auf einer Skala von 0 (Extreme Fear) bis 100 (Extreme Greed). Historisch sind Werte unter 20–25 oft gute Kaufzonen, weil die Masse überreagiert. Aktuell bei 28 – nahe der Kaufzone, aber noch nicht dort.',
+    rows:[['Aktueller Wert','28 – Fear'],['Kaufzone','< 20–25'],['Gefährlich teuer','> 75'],['Zusammensetzung','Volatilität, Momentum, Put/Call-Ratio, Zuflüsse']],
+    links:[{text:'Quelle öffnen',url:'https://money.cnn.com/data/fear-and-greed/'},{text:'Bei Claude analysieren',cp:'Analysiere den aktuellen Fear & Greed Index und was er für meine Kaufentscheidungen bedeutet'}]
+  },
+  'fg-krypto': {
+    title:'Fear & Greed Index (Krypto)',
+    sub:'alternative.me · Aktuell: 32 – Fear',
+    signal:'sig-wait',
+    signalText:'⚠ Abwarten – unter 20 = extreme Kaufzone',
+    explain:'Misst das Sentiment speziell im Krypto-Markt. Besteht aus Volatilität, Marktdominanz, Social Media Signalen und Momentum. Historisch sind Werte unter 20 – "Extreme Fear" – starke Kaufsignale für Bitcoin gewesen. Aktuell bei 32, noch kein extremes Signal.',
+    rows:[['Aktueller Wert','32 – Fear'],['Extreme Kaufzone','< 20'],['Letzte Extreme','FTX-Crash 2022: 6 / ATH Bull Run: 95+'],['Basis','Volatilität, Momentum, Social Media']],
+    links:[{text:'Quelle öffnen',url:'https://alternative.me/crypto/fear-and-greed-index/'},{text:'Bei Claude analysieren',cp:'Wie ist der aktuelle Krypto Fear & Greed und was bedeutet das konkret für Bitcoin?'}]
+  },
+  'dxy': {
+    title:'DXY – US Dollar Index',
+    sub:'TradingView · Aktuell: Stark ↑',
+    signal:'sig-avoid',
+    signalText:'⚠ Starker Dollar = Gegenwind für Gold & Krypto',
+    explain:'Der DXY misst den US-Dollar gegen einen Korb aus 6 Währungen (EUR, JPY, GBP, CAD, SEK, CHF). Ein starker Dollar drückt Rohstoffe und Krypto, weil diese in Dollar bewertet werden und für andere Währungen teurer werden. Aktuell stark wegen robustem US-Arbeitsmarkt.',
+    rows:[['Aktuell','Stark – nahe Jahreshoch'],['Wirkung auf Gold','Invers – DXY steigt, Gold fällt'],['Wirkung auf Krypto','Invers – Druck auf BTC/ETH'],['Treiber','Starke US-Jobsdaten, Fed hawkish']],
+    links:[{text:'Chart öffnen',url:'https://www.tradingview.com/chart/?symbol=TVC:DXY'},{text:'Bei Claude analysieren',cp:'Analysiere den DXY Dollar Index – wann könnte er schwächer werden und was bedeutet das für Gold?'}]
+  },
+  'fed': {
+    title:'Fed Funds Rate',
+    sub:'Federal Reserve · Aktuell: 5,25–5,50%',
+    signal:'sig-avoid',
+    signalText:'⚠ Hoch und stabil – kein Rückenwind für Risk Assets',
+    explain:'Der wichtigste Zinssatz der Welt. Hohe Zinsen machen Anleihen attraktiver gegenüber Aktien und Krypto. Wachstumswerte leiden besonders, weil ihre künftigen Cashflows mit höherem Zinssatz abdiskontiert werden. Nächste Sitzung: 18. Juni 2026.',
+    rows:[['Aktueller Satz','5,25–5,50%'],['Nächste Sitzung','18. Juni 2026'],['Markterwartung','Keine Senkung 2026'],['Wirkung auf Aktien','Negativ für Growth, neutral für Value']],
+    links:[{text:'Fed Kalender',url:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},{text:'Bei Claude analysieren',cp:'Wann wird die Fed die Zinsen senken und was sind die Signale die ich beobachten muss?'}]
+  },
+  'realzins': {
+    title:'Realzins 10J USA',
+    sub:'FRED / TIPS · Aktuell: +2,1%',
+    signal:'sig-avoid',
+    signalText:'⚠ Positiv und hoch – Druck auf Gold & Krypto',
+    explain:'Realzins = Nominalzins (10J Treasury) minus Inflation. Wenn der Realzins positiv und hoch ist, lohnen sich sichere Anleihen mehr als Gold (das keine Zinsen zahlt) oder Krypto. Historisch korreliert ein negativer Realzins stark mit steigenden Goldpreisen. Aktuell +2,1% = echter Gegenwind.',
+    rows:[['Aktueller Realzins','+2,1%'],['Gut für Gold','Realzins < 0%'],['Gut für Krypto','Realzins < 0% + Fed dovish'],['Historisch','2020–2022: Realzins -1% → Gold +40%']],
+    links:[{text:'FRED Daten',url:'https://fred.stlouisfed.org/series/DFII10'},{text:'Bei Claude analysieren',cp:'Analysiere den aktuellen Realzins und was er für meine Gold und Krypto Positionen bedeutet'}]
+  },
+  'oel': {
+    title:'Öl (Brent Crude)',
+    sub:'ICE · Aktuell: ~$97',
+    signal:'sig-avoid',
+    signalText:'🚫 Kein Einstieg – geopolitisch getrieben',
+    explain:'Brent Öl wird durch den Iran-Konflikt und OPEC+-Entscheidungen bewegt. Hoher Ölpreis erhöht die Inflation, was die Fed zwingt hawkish zu bleiben, was wiederum alle Risk Assets belastet. Gleichzeitig belastet hoher Ölpreis Airlines, Chemie und Transportunternehmen direkt.',
+    rows:[['Aktueller Kurs','~$97'],['Kaufzone','$70–75 (bei Deeskalation)'],['Resistenz','$100–105'],['Haupttreiber','Iran-Konflikt, OPEC+ Förderung'],['Wirkung','Belastet LHA, erhöht Inflation']],
+    links:[{text:'Chart öffnen',url:'https://www.tradingview.com/chart/?symbol=TVC:UKOIL'},{text:'Bei Claude analysieren',cp:'Analysiere den Ölpreis – wann könnte eine Short-Position mit WisdomTree Short Crude Oil sinnvoll sein?'}]
+  },
+  'cpi': {
+    title:'CPI – US Inflationsrate',
+    sub:'Bureau of Labor Statistics · Aktuell: ~3,4%',
+    signal:'sig-wait',
+    signalText:'⚠ Über Fed-Ziel – kein Rückenwind für Zinssenkungen',
+    explain:'Der Consumer Price Index misst die Preisentwicklung eines repräsentativen Warenkorbs. Die Fed hat ein Inflationsziel von 2%. Solange CPI über 3% liegt, ist eine Zinssenkung unwahrscheinlich. Nächste CPI-Veröffentlichung: 12. Juni 2026 – wichtiger Termin!',
+    rows:[['Aktuell','~3,4%'],['Fed-Ziel','2,0%'],['Nächste Veröffentlichung','12. Juni 2026'],['Wirkung bei Überraschung','Höher = Märkte fallen']],
+    links:[{text:'BLS Daten',url:'https://www.bls.gov/cpi/'},{text:'Bei Claude analysieren',cp:'Was erwarte ich vom CPI am 12. Juni und wie positioniere ich mich davor?'}]
+  },
+  'm2': {
+    title:'M2 Geldmenge USA',
+    sub:'Federal Reserve / FRED',
+    signal:'sig-wait',
+    signalText:'📊 Langfristig inflationär – Real Assets bevorzugen',
+    explain:'M2 misst die gesamte Geldmenge inkl. Bankeinlagen. Wenn M2 stark wächst, bedeutet das mehr Geld jagt gleiche Güter → Inflation. Langfristig einer der stärksten Treiber für Gold und Bitcoin. Aktuell wächst M2 wieder nach kurzem Rückgang 2022/23.',
+    rows:[['Trend','Wächst wieder'],['Wirkung langfristig','Positiv für Gold, Bitcoin, Rohstoffe'],['Quelle','FRED: M2SL'],['Zyklus','Dalio: späte Phase Kurzfristzyklus']],
+    links:[{text:'FRED Daten',url:'https://fred.stlouisfed.org/series/M2SL'},{text:'Bei Claude analysieren',cp:'Analysiere die aktuelle M2 Geldmengenentwicklung und was das für reale Assets bedeutet'}]
+  },
+  'bdi': {
+    title:'Baltic Dry Index',
+    sub:'Baltic Exchange – Frühindikator Welthandel',
+    signal:'sig-wait',
+    signalText:'📊 Frühindikator – zeigt Wirtschaftserwartungen',
+    explain:'Der BDI misst die Frachtkosten für Schüttgut (Getreide, Kohle, Erze) auf Seewegen. Er gilt als Frühindikator für die globale Wirtschaftsaktivität, weil er direkt die Nachfrage nach Rohstoffen und Gütern widerspiegelt – ohne finanzielle Spekulation.',
+    rows:[['Was es misst','Frachtkosten Trockengüter weltweit'],['Steigt','→ Wirtschaft wächst, Rohstoffnachfrage hoch'],['Fällt','→ Wirtschaft schwächelt'],['Quelle','TradingView: TVC:BDI']],
+    links:[{text:'Chart öffnen',url:'https://www.tradingview.com/chart/?symbol=TVC:BDI'},{text:'Bei Claude analysieren',cp:'Wie steht der Baltic Dry Index aktuell und was sagt das über die globale Wirtschaft?'}]
+  },
+  'gold-silber-ratio': {
+    title:'Gold/Silber-Ratio',
+    sub:'Aktuell: ~58:1 – historisch hoch',
+    signal:'sig-buy',
+    signalText:'✅ Historisch hoch → Silber relativ günstig',
+    explain:'Die Ratio zeigt wie viele Unzen Silber man braucht um 1 Unze Gold zu kaufen. Historischer Durchschnitt: ~55–60. Aktuell ~58, was bedeutet Silber ist im Verhältnis zu Gold günstig. Wenn die Ratio zurückkommt (Silber outperformt Gold), profitiert man doppelt.',
+    rows:[['Aktuell','~58:1'],['Historischer Schnitt','~55–60:1'],['Bei Ratio > 80','Silber sehr günstig vs Gold'],['Bedeutung','Silber kaufen, wenn Ratio hoch ist']],
+    links:[{text:'Chart öffnen',url:'https://www.tradingview.com/chart/?symbol=TVC:GOLD%2FTVC:SILVER'},{text:'Bei Claude analysieren',cp:'Analysiere die aktuelle Gold/Silber-Ratio – ist jetzt ein guter Zeitpunkt für Silber?'}]
+  },
+  'gold': {
+    title:'Gold (XAU/USD)',
+    sub:'Aktuell: ~$4.450 · Korrektur läuft',
+    signal:'sig-wait',
+    signalText:'⚠ Abwarten – Korrektur noch nicht abgeschlossen',
+    explain:'Gold korrigiert nach dem Run auf $4.500+. Treiber der Korrektur: starke US-Jobsdaten → Fed bleibt hart → Realzinsen steigen → Dollar stark. Erst wenn Realzinsen wieder fallen oder Geopolitik eskaliert, ist ein Neueinstieg attraktiv.',
+    rows:[['Aktuell','~$4.450'],['Kaufzone','$3.800–4.000'],['ATH','~$4.500+'],['Support 200-Tage','~$3.600–3.800'],['Makro-Treiber','Realzinsen, DXY, Zentralbankkäufe']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=TVC:GOLD'},{text:'World Gold Council',url:'https://www.gold.org'},{text:'Bei Claude analysieren',cp:'Analysiere Gold gerade – wann ist der nächste sinnvolle Einstiegspunkt?'}]
+  },
+  'silber': {
+    title:'Silber (XAG/USD)',
+    sub:'Aktuell: ~$76 · Interessant',
+    signal:'sig-wait',
+    signalText:'👀 Interessant – auf Stabilisierung am Support warten',
+    explain:'Silber hat von $121 ATH auf $60 korrigiert – ein massiver Einbruch. Jetzt erholt es sich. Der entscheidende Support liegt bei $68–72 (200-Tage-Linie). Silber profitiert doppelt: als Edelmetall-Hedge UND als Industrie-Metal für Solar, AI-Kabel, Elektronik. Gold/Silber-Ratio bei ~58 → Silber historisch günstig.',
+    rows:[['Aktuell','~$76'],['Kaufzone','$68–72 (200-Tage-Linie)'],['ATH','$121'],['Resistenz','$85–90'],['Doppel-Treiber','Edelmetall + AI/Solar-Industrie']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=TVC:SILVER'},{text:'Bei Claude analysieren',cp:'Analysiere Silber gerade – ist der Support bei $70 stabil und wann ist der richtige Einstieg?'}]
+  },
+  'kupfer': {
+    title:'Kupfer (HG1!)',
+    sub:'Drunter-Liegend: AI + EV Infrastruktur',
+    signal:'sig-wait',
+    signalText:'👀 Beobachten – strukturelle Langfrist-Chance',
+    explain:'Kupfer ist das Metall der Energiewende. Jedes Rechenzentrum, jede Solaranlage, jede Windturbine und jedes E-Auto braucht massiv Kupfer für Verkabelung. Das Angebot wächst kaum (neue Minen dauern 10+ Jahre). Langfristig eine der überzeugendsten Drunter-Liegend-Thesen.',
+    rows:[['Ticker','TradingView: COMEX:HG1!'],['Nachfrage-Treiber','AI-Rechenzentren, EV, Solar'],['Angebot','Strukturell knapp (neue Minen = 10+ Jahre)'],['Investition','Kupferminen, ETFs, Kupfer-Future']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=COMEX:HG1!'},{text:'Bei Claude analysieren',cp:'Analysiere Kupfer als Investment – Fundamentaldaten, Angebot-Nachfrage und konkrete Einstiegsmöglichkeiten'}]
+  },
+  'uran': {
+    title:'Uran (UX1)',
+    sub:'Kernkraft für AI-Strom – frühes Narrativ',
+    signal:'sig-wait',
+    signalText:'👀 Früh – Narrativ wächst, noch günstig',
+    explain:'Kernkraft wird als einzige zuverlässige CO2-arme Stromquelle für Rechenzentren immer relevanter. Microsoft, Google und Amazon bauen Kernkraft-Deals. Uran-Produzenten profitieren direkt. Das Narrativ ist noch nicht Mainstream – früh genug.',
+    rows:[['Spot-Preis','Volatile, aber strukturell steigend'],['Produzenten','Cameco (CCJ), Kazatomprom'],['ETF','Sprott Uranium Miners ETF (URNM)'],['Risiko','Regulierung, politischer Widerstand']],
+    links:[{text:'Bei Claude analysieren',cp:'Analysiere Uran als Investment – Fundamentaldaten, Angebot, Nachfrage und beste Investitionsmöglichkeiten'}]
+  },
+  'lha': {
+    title:'Lufthansa (LHA.DE)',
+    sub:'Aktuell: ~8,40 € · Range: 6,40–14 €',
+    signal:'sig-wait',
+    signalText:'⚠ Mitte der Range – abwarten auf Kaufzone',
+    explain:'Lufthansa pendelt historisch zwischen ~6 und ~14 Euro. Klassischer Range-Trade: kaufen nahe $6–7, verkaufen nahe $12–14. Aktuell bei $8,40 – Mitte der Range, kein guter Einstieg. Hauptrisiko: hoher Ölpreis belastet Treibstoffkosten und Margen.',
+    rows:[['Aktuell','~8,40 €'],['Kaufzone','6,40–7,00 €'],['Verkaufszone','12,00–14,00 €'],['KGV','~8 (günstig)'],['Risiko','Ölpreis, Pilotenstreiks']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=XETR:LHA'},{text:'Bei Claude analysieren',cp:'Analysiere Lufthansa – wann ist der nächste sinnvolle Einstieg und welche Risiken gibt es?'}]
+  },
+  'ko': {
+    title:'Coca-Cola (KO)',
+    sub:'Aktuell: ~$79,58 · ATH: $81,92',
+    signal:'sig-wait',
+    signalText:'⚠ Beobachten – 50-Tage unterschritten',
+    explain:'Coca-Cola ist ein stabiler Dividendenzahler (langfristiger Aufwärtstrend, kein klassischer Swing-Trade). Hat am 4. Juni die 50-Tage-Linie unterschritten nach ATH bei $81,92. Fundamentals stark. Interessant für Nachkauf bei einem tieferen Rücksetzer auf $72–75.',
+    rows:[['Aktuell','~$79,58'],['ATH','$81,92 (19. Mai 2026)'],['50-Tage-Linie','am 04.06. unterschritten'],['Kaufzone','$72–75'],['KGV','~25 (stabile Bewertung für Qualität)']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=NYSE:KO'},{text:'Bei Claude analysieren',cp:'Analysiere Coca-Cola aktuell – wie tief könnte die Korrektur gehen und wo ist der beste Einstieg?'}]
+  },
+  'pypl': {
+    title:'PayPal (PYPL)',
+    sub:'KGV ~8 · Abwärtstrend läuft',
+    signal:'sig-wait',
+    signalText:'⚠ Warten – erst nach Trendwende + Juli-Zahlen',
+    explain:'PayPal ist fundamental günstig (KGV ~8, EPS ~$5,31), aber der Abwärtstrend läuft. Günstig bedeutet nicht "kaufen" wenn der Trend gegen einen läuft. Wichtiger Katalysator: Quartalszahlen Ende Juli 2026. Wenn die Zahlen positiv überraschen und der Chart dreht, ist das der Einstieg.',
+    rows:[['KGV','~8 (günstig)'],['EPS 2026e','~$5,31'],['Abwärtstrend','läuft noch'],['Katalysator','Quartalszahlen Ende Juli 2026'],['Einstieg','Erst nach Trendwende bestätigt']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=NASDAQ:PYPL'},{text:'Bei Claude analysieren',cp:'Analysiere PayPal – wann dreht der Trend und was erwarte ich von den Juli-Quartalszahlen?'}]
+  },
+  'miner': {
+    title:'Bitcoin-Miner (IREN, CleanSpark)',
+    sub:'Aschenbrenner-These: AI-Infrastruktur',
+    signal:'sig-wait',
+    signalText:'👀 Interessant – Drunter-Liegend AI-Play',
+    explain:'Bitcoin-Miner haben was AI-Rechenzentren brauchen: günstigen Strom, große Flächen, Kühlsysteme. Aschenbrenner hält sie deshalb als AI-Infrastruktur-Investment. Sie werden noch als "Krypto-Zocker" eingepreist, nicht als Infrastruktur-Asset. Das ist die Fehlbewertung.',
+    rows:[['IREN Ticker','NASDAQ: IREN'],['CleanSpark Ticker','NASDAQ: CLSK'],['These','Miner = günstige AI-Infrastruktur'],['Risiko','BTC-Preis, Strom-Regulierung'],['Katalysator','AI-Datacenter-Deals bekannt werden']],
+    links:[{text:'IREN Chart',url:'https://www.tradingview.com/chart/?symbol=NASDAQ:IREN'},{text:'CleanSpark Chart',url:'https://www.tradingview.com/chart/?symbol=NASDAQ:CLSK'},{text:'Bei Claude analysieren',cp:'Analysiere IREN und CleanSpark als AI-Infrastruktur Investment – Fundamentaldaten und Einstiegszonen'}]
+  },
+  'bloom': {
+    title:'Bloom Energy (BE)',
+    sub:'Strom für AI-Rechenzentren',
+    signal:'sig-wait',
+    signalText:'👀 Beobachten – Drunter-Liegend AI-Strom',
+    explain:'Bloom Energy stellt Brennstoffzellen-Systeme her, die direkt vor Ort sauberen Strom für Rechenzentren produzieren – ohne auf das Stromnetz angewiesen zu sein. Das löst das Grid-Problem von AI-Rechenzentren. Noch nicht eingepreist als AI-Play.',
+    rows:[['Ticker','NYSE: BE'],['Produkt','Brennstoffzellen für On-Site Power'],['Kunde','Rechenzentren, die Grid-unabhängig sein wollen'],['These','AI braucht Strom → Bloom liefert ihn direkt']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=NYSE:BE'},{text:'Bei Claude analysieren',cp:'Analysiere Bloom Energy als AI-Strom Investment – Fundamentaldaten, Bewertung, Einstiegszonen'}]
+  },
+  'btc': {
+    title:'Bitcoin (BTC)',
+    sub:'Aktuell: ~$60.000 · Kritische Support-Zone',
+    signal:'sig-wait',
+    signalText:'⚠ Kritische Zone – vorsichtig, aber Kaufzone nahe',
+    explain:'Bitcoin testet aktuell die $60.000-Zone – einen starken historischen Support. Makro-Gegenwind durch starke US-Jobsdaten und Fed-Hawkishness. Fear & Greed bei 32 – noch nicht in der extremen Kaufzone (<20). Wenn $60k hält und Fear unter 20 fällt → attraktiver Einstieg.',
+    rows:[['Aktuell','~$60.000'],['Support','$55.000–60.000'],['Resistenz','$73.000–75.000 (ATH-Zone)'],['Fear & Greed','32 – Fear'],['Makro','Fed hawkish → kurzfristiger Druck']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=BITSTAMP:BTCUSD'},{text:'Glassnode On-Chain',url:'https://glassnode.com'},{text:'Bei Claude analysieren',cp:'Analysiere Bitcoin gerade – hält der $60k Support und wann ist der optimale Einstieg?'}]
+  },
+  'eth': {
+    title:'Ethereum (ETH)',
+    sub:'Plattform-Asset – folgt BTC-Trend',
+    signal:'sig-wait',
+    signalText:'⚠ Beobachten – BTC muss zuerst stabilisieren',
+    explain:'Ethereum ist das Rückgrat von DeFi und Web3. In Risk-Off-Phasen fällt ETH meist stärker als BTC. Erst wenn Bitcoin stabilisiert und die Makro-Lage dreht, wird ETH attraktiv. ETH/BTC-Ratio beobachten: wenn ETH stärker als BTC wird, ist das ein bullisches Signal.',
+    rows:[['Zusammenhang','Korreliert stark mit BTC'],['ETH/BTC Ratio','Beobachten für relativen Stärke-Check'],['Use Case','DeFi, Smart Contracts, NFTs'],['Einstieg','Erst nach BTC-Stabilisierung']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=BITSTAMP:ETHUSD'},{text:'Bei Claude analysieren',cp:'Analysiere Ethereum – wie verhält sich ETH relativ zu BTC und wann ist der Einstieg attraktiv?'}]
+  },
+  'ada': {
+    title:'Cardano (ADA)',
+    sub:'Aktuell: ~0,14 € · 5-Jahres-Tief',
+    signal:'sig-avoid',
+    signalText:'🚫 Finger weg – fundamental kaputt',
+    explain:'Cardano hat heute ein 5-Jahres-Tief erreicht. Hoskinson (Gründer) hat eine Auszeit angekündigt, der Summit 2026 wurde wegen einer gescheiterten Treasury-Abstimmung abgesagt. Das sind fundamentale Warnsignale – kein technisches Support-Level überzeugt wenn die Fundamentals kaputt sind.',
+    rows:[['Aktuell','~0,14 €'],['5-Jahres-Tief','Heute erreicht'],['Fundamental','Hoskinson-Auszeit, Summit abgesagt'],['Historischer Support','0,30 €'],['Fazit','Erst wieder interessant wenn Fundamentals stimmen']],
+    links:[{text:'TradingView Chart',url:'https://www.tradingview.com/chart/?symbol=BINANCE:ADAUSDT'},{text:'Bei Claude analysieren',cp:'Was passiert aktuell bei Cardano und wann könnte ADA wieder interessant werden?'}]
+  }
 };
 
-// Abend-Rotation Florian (Mo–So fest)
-var ABEND=[
-  {tag:"Mo",name:"Skyr + Banane",tip:"KH aus Banane für Proteinaufnahme.",
-    ing:[{n:"Skyr",v:300,u:"g",kc:0.67,p:0.115,f:0.003,k:0.038},{n:"Banane",v:120,u:"g",kc:0.89,p:0.011,f:0.003,k:0.230}]},
-  {tag:"Di",name:"Griech. Joghurt + Haferflocken + Honig",tip:"Haferflocken = langsame KH, ideal abends.",
-    ing:[{n:"Griech. Joghurt 2%",v:300,u:"g",kc:0.73,p:0.090,f:0.020,k:0.040},{n:"Haferflocken",v:40,u:"g",kc:1.50,p:0.130,f:0.030,k:0.280},{n:"Honig",v:15,u:"g",kc:3.00,p:0.003,f:0,k:0.820}]},
-  {tag:"Mi",name:"Körniger Frischkäse + Gemüse + Brot",tip:"Brot gibt KH, Gemüse Volumen ohne Kalorien.",
-    ing:[{n:"Körniger Frischkäse",v:200,u:"g",kc:0.97,p:0.105,f:0.040,k:0.035},{n:"Gurke/Paprika",v:100,u:"g",kc:0.20,p:0.010,f:0.002,k:0.040},{n:"Vollkornbrot",v:80,u:"g",kc:2.20,p:0.085,f:0.025,k:0.400}]},
-  {tag:"Do",name:"Skyr + Beeren + Granola",tip:"Granola gibt KH. Nicht zu viel — kalorienreich.",
-    ing:[{n:"Skyr",v:300,u:"g",kc:0.67,p:0.115,f:0.003,k:0.038},{n:"Beeren gemischt",v:100,u:"g",kc:0.45,p:0.010,f:0.005,k:0.100},{n:"Granola",v:30,u:"g",kc:4.50,p:0.080,f:0.120,k:0.620}]},
-  {tag:"Fr",name:"Körniger Frischkäse + Apfel + Brot",tip:"Apfel als natürliche KH-Quelle abends.",
-    ing:[{n:"Körniger Frischkäse",v:200,u:"g",kc:0.97,p:0.105,f:0.040,k:0.035},{n:"Apfel",v:120,u:"g",kc:0.52,p:0.003,f:0.002,k:0.138},{n:"Vollkornbrot",v:80,u:"g",kc:2.20,p:0.085,f:0.025,k:0.400}]},
-  {tag:"Sa",name:"Griech. Joghurt + Müsli + Beeren",tip:"Müsli liefert komplexe KH und Ballaststoffe.",
-    ing:[{n:"Griech. Joghurt 2%",v:300,u:"g",kc:0.73,p:0.090,f:0.020,k:0.040},{n:"Müsli (ohne Zucker)",v:40,u:"g",kc:3.80,p:0.100,f:0.070,k:0.650},{n:"Beeren gemischt",v:80,u:"g",kc:0.45,p:0.010,f:0.005,k:0.100}]},
-  {tag:"So",name:"Skyr + Apfel + Zimt",tip:"Zimt stabilisiert Blutzucker. Apfel = natürliche KH.",
-    ing:[{n:"Skyr",v:300,u:"g",kc:0.67,p:0.115,f:0.003,k:0.038},{n:"Apfel",v:120,u:"g",kc:0.52,p:0.003,f:0.002,k:0.138},{n:"Zimt",v:2,u:"g",kc:2.50,p:0.040,f:0.015,k:0.550}]}
-];
-
-// Laura Snacks
-var SNACK=[
-  {tag:"Tagsüber",tc:"#FDF3E3",tt:"#92600A",name:"Skyr + Beeren + Granola",tip:"Tagsüber als Snack.",
-    ing:[{n:"Skyr",v:150,u:"g",kc:0.67,p:0.115,f:0.003,k:0.038},{n:"Beeren",v:80,u:"g",kc:0.45,p:0.010,f:0.005,k:0.100},{n:"Granola",v:20,u:"g",kc:4.50,p:0.080,f:0.120,k:0.620}]},
-  {tag:"Tagsüber",tc:"#FDF3E3",tt:"#92600A",name:"Reiswaffeln + Erdnussbutter",tip:"Schnell für unterwegs.",
-    ing:[{n:"Reiswaffeln",v:33,u:"g",kc:3.90,p:0.080,f:0.030,k:0.800},{n:"Erdnussbutter",v:20,u:"g",kc:6.00,p:0.250,f:0.500,k:0.220}]},
-  {tag:"Abend",tc:"#E8F5EE",tt:"#1A7A4A",name:"Körniger Frischkäse + Gemüse",tip:"Leicht, proteinreich.",
-    ing:[{n:"Körniger Frischkäse",v:150,u:"g",kc:0.97,p:0.105,f:0.040,k:0.035},{n:"Gurke oder Paprika",v:100,u:"g",kc:0.20,p:0.010,f:0.002,k:0.040}]},
-  {tag:"Abend",tc:"#E8F5EE",tt:"#1A7A4A",name:"Hartgekochte Eier",tip:"4–6 auf einmal kochen und lagern.",
-    ing:[{n:"Eier",v:2,u:"Stk",kc:74,p:6.3,f:5.3,k:0.4}]},
-  {tag:"Abend",tc:"#E8F5EE",tt:"#1A7A4A",name:"Magerquark + Beeren",tip:"Casein-Protein — ideal vor dem Schlafen.",
-    ing:[{n:"Magerquark",v:200,u:"g",kc:0.80,p:0.120,f:0.002,k:0.040},{n:"Beeren",v:80,u:"g",kc:0.45,p:0.010,f:0.005,k:0.100}]}
-];
-
-// Makros berechnen
-var BASE_KC=2900;
-var BASE_KG=95;
-function scaleFactor(kc){return kc/BASE_KC;}
-function weightFactor(kg){return kg/BASE_KG;}
-function mac(ing,factor){
-  var f=factor||1;
-  var r={kc:0,p:0,f:0,k:0};
-  ing.forEach(function(x){
-    var v=x.v*f;
-    r.kc+=x.kc*v;r.p+=x.p*v;r.f+=x.f*v;r.k+=x.k*v;
-  });
-  return {kc:Math.round(r.kc),p:Math.round(r.p),f:Math.round(r.f),k:Math.round(r.k)};
-}
-function scaledV(v,f){return Math.round(v*f*10)/10;}
-
-// Speicher
-function loadRec(key,ing){try{var s=localStorage.getItem("rec-"+key);if(s){var d=JSON.parse(s);d.forEach(function(v,i){if(ing[i])ing[i].v=v;});}}catch(e){}}
-function saveRec(key,ing){try{localStorage.setItem("rec-"+key,JSON.stringify(ing.map(function(x){return x.v;})));}catch(e){}}
-function loadAll(){
-  Object.keys(REC).forEach(function(k){loadRec(k,REC[k].ing);});
-  ABEND.forEach(function(r,i){loadRec("ab"+i,r.ing);});
-  SNACK.forEach(function(r,i){loadRec("sn"+i,r.ing);});
+function showPopup(key){
+  var p=popups[key];
+  if(!p)return;
+  var links=p.links.map(l=>{
+    if(l.cp) return '<button class="btn" style="margin-top:.5rem" onclick="cp(\''+l.cp.replace(/'/g,"\\'")+'\')">'+(l.text||'Bei Claude analysieren')+'</button>';
+    return '<a class="popup-link" href="'+l.url+'" target="_blank">'+l.text+'</a>';
+  }).join('');
+  var rows=p.rows.map(r=>'<div class="popup-row"><span class="popup-row-label">'+r[0]+'</span><span class="popup-row-val">'+r[1]+'</span></div>').join('');
+  document.getElementById('popup-content').innerHTML=`
+    <div class="popup-title">${p.title}</div>
+    <div class="popup-sub">${p.sub}</div>
+    <div class="signal-box ${p.signal}">${p.signalText}</div>
+    <div class="popup-section">
+      <div class="popup-section-title">Erklärung</div>
+      <div class="popup-explain">${p.explain}</div>
+    </div>
+    <div class="popup-section">
+      <div class="popup-section-title">Details</div>
+      ${rows}
+    </div>
+    <div style="margin-top:.75rem">${links}</div>
+  `;
+  document.getElementById('overlay').classList.add('open');
 }
 
-// Portionsgröße TK
-function portG(id,p){var w=WTS[id]>0?WTS[id]:DW[id];var fp=Math.round(w/20*weightFactor(ST.fKg));return p==="F"?fp:Math.round(fp*0.75);}
-function updWR(id,v){var el=document.getElementById("wr-"+id);if(!el)return;var fp=Math.round(v/20),lp=Math.round(fp*0.75);el.innerHTML="Florian: <strong>"+fp+"g</strong> pro Dose &nbsp;·&nbsp; Laura: <strong>"+lp+"g</strong> pro Dose";}
-function saveW(id){var v=parseInt(document.getElementById("w-"+id).value);if(!v||v<100)return;WTS[id]=v;updWR(id,v);try{localStorage.setItem("mp-w-"+id,String(v));document.getElementById("ws-"+id).style.display="inline";}catch(e){}renderWeek();}
-function loadW(){ROT.forEach(function(id){try{var v=localStorage.getItem("mp-w-"+id);if(v){var n=parseInt(v);WTS[id]=n;document.getElementById("w-"+id).value=n;document.getElementById("ws-"+id).style.display="inline";updWR(id,n);}else{updWR(id,DW[id]);}}catch(e){updWR(id,DW[id]);}});}
+// KALENDER
+var calEntries=JSON.parse(localStorage.getItem('calEntries')||'[]');
+function addCalEntry(){
+  var d=document.getElementById('cal-date-input').value;
+  var e=document.getElementById('cal-event-input').value;
+  var i=document.getElementById('cal-impact-input').value;
+  var n=document.getElementById('cal-note-input').value;
+  if(!d||!e)return alert('Datum und Ereignis ausfüllen');
+  calEntries.push({date:d,event:e,impact:i,note:n});
+  localStorage.setItem('calEntries',JSON.stringify(calEntries));
+  renderCal();
+  document.getElementById('cal-date-input').value='';
+  document.getElementById('cal-event-input').value='';
+  document.getElementById('cal-note-input').value='';
+}
+function renderCal(){
+  var el=document.getElementById('cal-user-entries');
+  if(!calEntries.length){el.innerHTML='';return}
+  var s=[...calEntries].sort((a,b)=>a.date.localeCompare(b.date));
+  el.innerHTML='<p class="label">Eigene Termine</p><div class="card">'+s.map((e,i)=>`<div class="cal-row"><span class="cal-date">${new Date(e.date).toLocaleDateString('de-DE')}</span><div class="cal-event"><div class="rtxt">${e.event}</div>${e.note?`<div class="rsub">${e.note}</div>`:''}</div><span class="cal-impact imp-${e.impact}">${e.impact==='high'?'Hoch':e.impact==='mid'?'Mittel':'Niedrig'}</span><button class="btn btn-danger" style="padding:2px 8px;font-size:11px" onclick="delCal(${i})">✕</button></div>`).join('')+'</div>';
+}
+function delCal(i){calEntries.splice(i,1);localStorage.setItem('calEntries',JSON.stringify(calEntries));renderCal()}
+renderCal();
 
-function renderInfo(){
-  var fP=ST.fKg*2,lP=ST.lKg*2;
-  var fTr=Math.round(ST.fKc*1.10),fRe=Math.round(ST.fKc*0.90);
-  var lTr=Math.round(ST.lKc*1.10),lRe=Math.round(ST.lKc*0.90);
-  document.getElementById("f-info").innerHTML="Protein: <strong>"+fP+"g</strong>/Tag &nbsp;·&nbsp; Ruhe: ~"+fRe+"kcal &nbsp;·&nbsp; Training: ~"+fTr+"kcal<br>Fett: ~53g/Tag &nbsp;·&nbsp; Omega-3: 30g Walnüsse im Shake";
-  document.getElementById("l-info").innerHTML="Protein: <strong>"+lP+"g</strong>/Tag &nbsp;·&nbsp; Ruhe: ~"+lRe+"kcal &nbsp;·&nbsp; Training: ~"+lTr+"kcal<br>Fett: ~26g/Tag";
+// JOURNAL
+var trades=JSON.parse(localStorage.getItem('trades')||'[]');
+function addTrade(){
+  var asset=document.getElementById('j-asset').value;
+  var dir=document.getElementById('j-dir').value;
+  var entry=document.getElementById('j-entry').value;
+  var exit=document.getElementById('j-exit').value;
+  var date=document.getElementById('j-date').value;
+  var size=document.getElementById('j-size').value;
+  var reason=document.getElementById('j-reason').value;
+  var lesson=document.getElementById('j-lesson').value;
+  if(!asset||!entry||!date)return alert('Asset, Einstieg und Datum ausfüllen');
+  var result=null;
+  if(exit&&entry){var pct=dir==='long'?((parseFloat(exit)-parseFloat(entry))/parseFloat(entry)*100):((parseFloat(entry)-parseFloat(exit))/parseFloat(entry)*100);result=pct.toFixed(1);}
+  trades.unshift({asset,dir,entry,exit,date,size,reason,lesson,result,id:Date.now()});
+  localStorage.setItem('trades',JSON.stringify(trades));
+  renderJournal();
+  ['j-asset','j-entry','j-exit','j-date','j-size','j-reason','j-lesson'].forEach(id=>document.getElementById(id).value='');
+}
+function deleteTrade(id){trades=trades.filter(t=>t.id!==id);localStorage.setItem('trades',JSON.stringify(trades));renderJournal()}
+function renderJournal(){
+  var el=document.getElementById('journal-list');
+  if(!trades.length){el.innerHTML='<div style="color:#888;font-size:13px;text-align:center;padding:1rem">Noch keine Trades.</div>';updateStats();return}
+  el.innerHTML=trades.map(t=>`<div class="trade-row"><span class="trade-asset">${t.asset}</span><span class="trade-dir ${t.dir==='long'?'dir-long':'dir-short'}">${t.dir==='long'?'Long':'Short'}</span><span style="font-size:11px;color:#777;min-width:70px">${new Date(t.date).toLocaleDateString('de-DE')}</span><span style="font-size:11px;color:#555;min-width:80px">${t.entry}${t.exit?' → '+t.exit:' (offen)'}</span>${t.result!==null?`<span class="trade-result ${parseFloat(t.result)>=0?'result-pos':'result-neg'}">${parseFloat(t.result)>=0?'+':''}${t.result}%</span>`:'<span class="trade-result" style="color:#888">offen</span>'}<span class="trade-note">${t.reason||''}</span><button class="btn btn-danger" style="padding:2px 8px;font-size:11px;flex-shrink:0" onclick="deleteTrade(${t.id})">✕</button></div>${t.lesson?`<div style="font-size:11px;color:#639922;padding:.2rem 0 .4rem 88px;border-bottom:1px solid #f0efeb">💡 ${t.lesson}</div>`:''}`).join('');
+  updateStats();
+}
+function updateStats(){
+  var closed=trades.filter(t=>t.result!==null);
+  var wins=closed.filter(t=>parseFloat(t.result)>=0).length;
+  var losses=closed.filter(t=>parseFloat(t.result)<0).length;
+  document.getElementById('stat-count').textContent=trades.length;
+  document.getElementById('stat-win').textContent=wins;
+  document.getElementById('stat-loss').textContent=losses;
+  document.getElementById('stat-wr').textContent=closed.length?Math.round(wins/closed.length*100)+'%':'–';
+}
+renderJournal();
+
+// WATCHLIST
+var wlItems = JSON.parse(localStorage.getItem('watchlist') || '[]');
+
+function addWatchlistItem(){
+  var ticker = document.getElementById('wl-ticker').value.trim();
+  var note = document.getElementById('wl-note').value.trim();
+  var signal = document.getElementById('wl-signal').value;
+  if(!ticker) return alert('Ticker/Name eingeben');
+  wlItems.unshift({ticker, note, signal, id: Date.now()});
+  localStorage.setItem('watchlist', JSON.stringify(wlItems));
+  renderWatchlist();
+  document.getElementById('wl-ticker').value = '';
+  document.getElementById('wl-note').value = '';
 }
 
-function renderWeek(){
-  var fKcB=ST.fKc,lKcB=ST.lKc,fP=ST.fKg*2,lP=ST.lKg*2;
-  var SHfix=mac(REC.shake.ing,scaleFactor(ST.fKc)*weightFactor(ST.fKg));
-  var html="";
-  for(var i=0;i<PLAN.length;i++){
-    var p=PLAN[i];
-    var isTr=p.cls==="tr"||p.cls==="ko";
-    var fKc=Math.round(isTr?fKcB*1.10:fKcB*0.90);
-    var lKc=Math.round(isTr?lKcB*1.10:lKcB*0.90);
-    var fFrS,fM1S,fM2S;
-    if(isTr){fFrS=Math.round(fKc*0.26);fM1S=Math.round(fKc*0.26);fM2S=Math.round(fKc*0.22);}
-    else{fFrS=Math.round(fKc*0.22);fM1S=Math.round(fKc*0.22);fM2S=Math.round(fKc*0.22);}
-    var fAbS=Math.max(300,fKc-fFrS-fM1S-SHfix.kc-fM2S);
-    var lS=Math.round(lKc/5);
-
-    var ff=REC[p.fr],ffM=mac(ff.ing,scaleFactor(fKc)),shM=SHfix;
-    var lOJkc=p.lOJ?OJkc:0,lOJp=p.lOJ?OJp:0;
-    var lFrNames={porridge:"Porridge",ruehrei:"Rührei + Toast",pfannkuchen:"Pfannkuchen ½"};
-    var lFrKc={porridge:350,ruehrei:240,pfannkuchen:270};
-    var lFrP={porridge:30,ruehrei:27,pfannkuchen:27};
-
-    var bk=BK[p.b];
-    var fBg1=Math.max(50,Math.round((fM1S-TKkc)/bk));
-    var fBg2=Math.max(50,Math.round((fM2S-TKkc)/bk));
-    var lBg=Math.max(20,Math.round((lS-TLkc)/bk));
-    var fTKkc=Math.round(TKkc*weightFactor(ST.fKg));
-    var fM1kc=fTKkc+Math.round(fBg1*bk),fM2kc=fTKkc+Math.round(fBg2*bk);
-    var lMkc=TLkc+Math.round(lBg*bk);
-    var abM=mac(ABEND[i].ing,scaleFactor(fKc)*weightFactor(ST.fKg));
-    var fg1=portG(p.g1,"F"),lg1=portG(p.g1,"L"),fg2=portG(p.g2,"F"),lg2=portG(p.g2,"L");
-    var fTot=ffM.kc+fM1kc+shM.kc+fM2kc+abM.kc;
-    var fTKp=Math.round(TKp*weightFactor(ST.fKg));
-    var fPTot=ffM.p+fTKp+shM.p+fTKp+abM.p;
-    var lFrTotal=lOJkc+lFrKc[p.fr],lSnKc=lS,lAbKc=Math.max(100,lKc-(lFrTotal+lMkc+lSnKc+lMkc));
-    var lTot=lFrTotal+lMkc+lSnKc+lMkc+lAbKc;
-    var lPTot=lOJp+lFrP[p.fr]+TLp+15+TLp+18;
-    var fPct=Math.min(110,Math.round(fTot/fKc*100));
-    var lPct=Math.min(110,Math.round(lTot/lKc*100));
-    var fc=fPct>107?"#B02020":fPct>95?"#1A7A4A":"#D08A10";
-    var lc=lPct>107?"#B02020":lPct>95?"#1A7A4A":"#D08A10";
-    var gest=(fBg1+fBg2+lBg*2);
-    var kBox=p.kochtag?'<div class="ckb"><div class="ckb-l" id="sa-lbl"></div><div id="sa-dish"></div></div>':"";
-    var lOJs=p.lOJ?"OJ + ":"";
-    var lOJh=p.lOJ?"":'<span style="font-size:.58rem;color:#9B9890"> (kein OJ)</span>';
-    var trB=isTr?'<span class="bdg tr">Training</span>':'<span class="bdg re">Ruhe</span>';
-    var kB=p.kochtag?'<span class="bdg ko">Kochtag</span>':"";
-
-    html+='<div class="dc '+p.cls+'">'+
-      '<div class="dn">'+p.tag+'</div>'+trB+kB+kBox+
-      '<div class="bei"><div class="bei-n">'+p.b+' · '+gest+'g ges.</div><div class="bei-d">F: '+fBg1+'g/'+fBg2+'g<br>L: 2×'+lBg+'g</div></div>'+
-      '<div class="ml"><div class="ml-l">Frühstück + OJ ('+fFrS+'kcal)</div>'+
-        '<div class="mf" id="fr-f-'+i+'">'+ff.name+' · '+ffM.kc+'kcal / '+ffM.p+'g P</div>'+
-        '<div class="mfl" id="fr-l-'+i+'">'+lOJs+lFrNames[p.fr]+' · '+lFrTotal+'kcal'+lOJh+'</div></div>'+
-      '<div class="ml"><div class="ml-l">Mahlzeit 1 ('+fM1S+'kcal)</div>'+
-        '<div class="mf" id="m1-f-'+i+'">'+RN[p.g1]+' <strong>'+fg1+'g</strong> + '+fBg1+'g '+p.b+' · '+fM1kc+'kcal / '+fTKp+'g P</div>'+
-        '<div class="mfl" id="m1-l-'+i+'">'+RN[p.g1]+' <strong>'+lg1+'g</strong> + '+lBg+'g '+p.b+' · '+lMkc+'kcal / '+TLp+'g P</div></div>'+
-      '<div class="ml"><div class="ml-l">Shake (fix)</div>'+
-        '<div class="mf" id="sh-'+i+'">Shake · '+shM.kc+'kcal / '+shM.p+'g P</div>'+
-        '<div class="mfl">L: Snack-Rotation · ~'+lSnKc+'kcal</div></div>'+
-      '<div class="ml"><div class="ml-l">Mahlzeit 2 ('+fM2S+'kcal)</div>'+
-        '<div class="mf" id="m2-f-'+i+'">'+RN[p.g2]+' <strong>'+fg2+'g</strong> + '+fBg2+'g '+p.b+' · '+fM2kc+'kcal / '+fTKp+'g P</div>'+
-        '<div class="mfl" id="m2-l-'+i+'">'+RN[p.g2]+' <strong>'+lg2+'g</strong> + '+lBg+'g '+p.b+' · '+lMkc+'kcal / '+TLp+'g P</div></div>'+
-      '<div class="ml"><div class="ml-l">Abend (~'+fAbS+'kcal)</div>'+
-        '<div class="mf" id="ab-f-'+i+'"><strong>'+ABEND[i].name+'</strong> · '+abM.kc+'kcal / '+abM.p+'g P / <span style="color:var(--blue)">'+abM.k+'g KH</span></div>'+
-        '<div class="mfl">L: Abend-Rotation · ~'+lAbKc+'kcal</div></div>'+
-      '<div class="ds">'+
-        '<div class="ds-r">F: '+fTot+'/'+fKc+'kcal · '+fPTot+'/'+fP+'g P</div>'+
-        '<div class="ds-b"><div class="ds-f" style="width:'+fPct+'%;background:'+fc+'"></div></div>'+
-        '<div class="ds-r">L: '+lTot+'/'+lKc+'kcal · '+lPTot+'/'+lP+'g P</div>'+
-        '<div class="ds-b"><div class="ds-f" style="width:'+lPct+'%;background:'+lc+'"></div></div>'+
-      '</div></div>';
-  }
-  document.getElementById("wgrid").innerHTML=html;
-  // Click-Handler nach DOM-Aufbau
-  for(var i=0;i<PLAN.length;i++){
-    (function(idx){
-      var p=PLAN[idx];
-      var el;
-      el=document.getElementById("fr-f-"+idx);if(el)el.onclick=function(){oR(p.fr);};
-      el=document.getElementById("fr-l-"+idx);if(el)el.onclick=function(){oR(p.fr);};
-      el=document.getElementById("m1-f-"+idx);if(el)el.onclick=function(){oR(p.g1);};
-      el=document.getElementById("m1-l-"+idx);if(el)el.onclick=function(){oR(p.g1);};
-      el=document.getElementById("sh-"+idx);if(el)el.onclick=function(){oR("shake");};
-      el=document.getElementById("m2-f-"+idx);if(el)el.onclick=function(){oR(p.g2);};
-      el=document.getElementById("m2-l-"+idx);if(el)el.onclick=function(){oR(p.g2);};
-      el=document.getElementById("ab-f-"+idx);if(el)el.onclick=function(){oRAbend(idx);};
-    })(i);
-  }
-  uSa();
+function removeWlItem(id){
+  wlItems = wlItems.filter(i => i.id !== id);
+  localStorage.setItem('watchlist', JSON.stringify(wlItems));
+  renderWatchlist();
 }
 
-// Popup aufbauen
-function ingTable(key,ing,factor){
-  var f=factor||1;
-  var rows=ing.map(function(x,i){
-    var displayV=Math.round(x.v*f*10)/10;
-    return '<tr><td>'+x.n+'</td><td><input class="ing-inp" type="number" id="ii-'+key+'-'+i+'" value="'+displayV+'" step="0.5" data-base="'+x.v+'" data-factor="'+f+'"><span class="ing-unit">'+x.u+'</span></td></tr>';
-  }).join("");
-  return '<table class="ing-tbl"><thead><tr><th>Zutat</th><th style="text-align:right">Menge (bei '+Math.round(ST.fKc)+'kcal)</th></tr></thead><tbody>'+rows+'</tbody></table>'+
-    '<div style="font-size:.72rem;color:var(--txt2);margin:.5rem 0">Gespeichert wird als Basiswert ('+BASE_KC+'kcal). Skalierung passiert automatisch.</div>'+
-    '<button class="sav-btn" data-key="'+key+'" onclick="saveIng(this.dataset.key)">Speichern als Basis</button><span class="sav-ok" id="sok-'+key+'">✓ gespeichert</span>';
-}
-function macBox(m){
-  return '<div class="pp-mac">'+
-    '<div class="mb"><div class="mv" id="lv-kc">'+m.kc+'</div><div class="ml2">kcal</div></div>'+
-    '<div class="mb"><div class="mv" id="lv-p">'+m.p+'</div><div class="ml2">Protein</div></div>'+
-    '<div class="mb"><div class="mv" id="lv-f">'+m.f+'</div><div class="ml2">Fett</div></div>'+
-    '<div class="mb"><div class="mv" id="lv-k">'+m.k+'</div><div class="ml2">KH</div></div>'+
-  '</div>';
-}
-function stepsHtml(steps){return steps.map(function(s,i){return '<div class="step"><div class="snum">'+(i+1)+'</div><div>'+s+'</div></div>';}).join("");}
+var wlSignalMap = {
+  buy: {label:'Kaufzone', cls:'b-ok'},
+  watch: {label:'Beobachten', cls:'b-neutral'},
+  wait: {label:'Abwarten', cls:'b-warn'},
+  avoid: {label:'Finger weg', cls:'b-danger'}
+};
 
-function saveIng(key){
-  var ing=null;
-  if(REC[key])ing=REC[key].ing;
-  else if(key.substr(0,2)==="ab")ing=ABEND[parseInt(key.substr(2))].ing;
-  else if(key.substr(0,2)==="sn")ing=SNACK[parseInt(key.substr(2))].ing;
-  if(!ing)return;
-  ing.forEach(function(x,i){
-    var el=document.getElementById("ii-"+key+"-"+i);
-    if(el){
-      var displayVal=parseFloat(el.value)||x.v;
-      var f=parseFloat(el.dataset.factor)||1;
-      x.v=Math.round(displayVal/f*10)/10; // zurück auf Basis skalieren
-    }
-  });
-  saveRec(key,ing);
-  var ok=document.getElementById("sok-"+key);
-  if(ok){ok.style.display="inline";setTimeout(function(){ok.style.display="none";},2000);}
-  renderWeek();renderSnacks();renderAbend();
-  cR();
+function renderWatchlist(){
+  var el = document.getElementById('wl-user-items');
+  if(!el) return;
+  if(!wlItems.length){ el.innerHTML = ''; return; }
+  el.innerHTML = '<div class="grid2" style="margin-bottom:1rem">' +
+    wlItems.map(item => {
+      var sig = wlSignalMap[item.signal] || wlSignalMap.watch;
+      return `<div class="asset-card" style="position:relative">
+        <span class="badge ${sig.cls}">${sig.label}</span>
+        <button onclick="removeWlItem(${item.id})" style="position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;font-size:14px;color:#bbb">✕</button>
+        <div class="aname">${item.ticker}</div>
+        <div class="ameta" style="margin-top:4px">${item.note || '–'}</div>
+        <div class="chart-hint" onclick="cp('Analysiere ${item.ticker} – aktueller Stand, Kaufzone, Signal?')" style="cursor:pointer">📋 Bei Claude analysieren</div>
+      </div>`;
+    }).join('') + '</div>';
 }
+renderWatchlist();
 
-function oR(id){
-  var isTK=ROT.indexOf(id)>=0;
-  var r=REC[id];
-  if(!r){showTKPopup(id);return;}
-  var f=scaleFactor(ST.fKc);
-  var m=mac(r.ing,f);
-  var fp=portG(id,"F"),lp=portG(id,"L");
-  var portBox=isTK?'<div class="port-b">Portionsgröße: Florian = <strong>'+fp+'g</strong> &nbsp;·&nbsp; Laura = <strong>'+lp+'g</strong></div>':"";
-  document.getElementById("pp").innerHTML=
-    '<button class="cls-btn" onclick="cR()">Schließen</button>'+
-    '<div class="pp-ttl">'+r.name+'</div>'+
-    '<div class="pp-sub">Mengen bei '+ST.fKc+'kcal · Basis ändern → für alle Tage gespeichert</div>'+
-    portBox+macBox(m)+
-    '<div class="pp-sec">Zutaten (editierbar)</div>'+
-    ingTable(id,r.ing,f)+
-    '<div class="pp-sec">Zubereitung</div>'+stepsHtml(r.steps)+
-    '<div class="tip-b">Tipp: '+r.tip+'</div>';
-  document.getElementById("ov").classList.add("open");
-}
-
-function showTKPopup(id){
-  var fp=portG(id,"F"),lp=portG(id,"L");
-  var names={dahl:"Hähnchen-Kokos-Dahl",bolognese:"Turkey-Bolognese",gulasch:"Ofengulasch",curryhuhn:"Curryhuhn",stroganoff:"Stroganoff",butterchicken:"Butter Chicken",tikka:"Tikka Masala"};
-  var ings={
-    dahl:["2000g Hähnchenbrust","600g rote Linsen","2 Dosen Kokosmilch light","400g Baby-Spinat","4 Dosen stückige Tomaten","3 Zwiebeln","6 Knoblauchzehen","30g Ingwer","1L Hühnerbrühe","3 TL Kurkuma, Kreuzkümmel, Garam Masala","Salz, Pfeffer, Chili"],
-    bolognese:["2000g Putenhack","400g rote Linsen","3 Dosen stückige Tomaten","80g Tomatenmark","400g Karotten","3 Zwiebeln","6 Knoblauchzehen","500ml Hühnerbrühe","Oregano, Chiliflocken, Salz, Pfeffer"],
-    gulasch:["2500g Rindergulasch","1250g Zwiebeln","5 EL Paprikapulver edelsüß","5 EL Tomatenmark","2000g Rinderfond","7 EL Rotweinessig","Salz, Pfeffer, Petersilie"],
-    curryhuhn:["2000g Hähnchenbrust","200g Tomatenmark","4 Karotten, 2 Paprika","2 TL Currypaste","250ml Kokosmilch","250ml Cremefine 7%","40g Walnüsse","50g Skyr"],
-    stroganoff:["2000g Rindfleisch Hüfte","1000g Champignons","3 Zwiebeln","500ml Rinderfond","25g Worcestershire","20g Dijonsenf","120g Griech. Joghurt 2%"],
-    butterchicken:["2500g Hähnchenbrust","5 Zwiebeln","1250g passierte Tomaten","500g Griech. Joghurt 2%","25g Butter","5 TL Garam Masala, Chili, Kreuzkümmel"],
-    tikka:["2500g Hähnchenbrust","250g Joghurt (Marinade)","5 Zwiebeln","125g Ghee","1500g Dosentomaten","250ml Fond","125g Cremefine 7%"]
-  };
-  var steps={
-    dahl:["Zwiebeln, Knoblauch, Ingwer 5 Min andünsten.","Gewürze 2 Min anrösten.","Hähnchen würfeln, anbraten.","Tomaten, Kokosmilch, Brühe, Linsen. 20 Min köcheln.","Spinat 2 Min. Portionieren + einfrieren."],
-    bolognese:["Zwiebeln, Knoblauch, Karotten 5 Min anbraten.","Tomatenmark rösten. Putenhack krümelig braten.","Tomaten, Brühe, Linsen, Gewürze. 25 Min köcheln.","Portionieren + einfrieren."],
-    gulasch:["Ofen 180°C vorheizen.","Zwiebeln in Olivenöl 15 Min goldbraun.","Tomatenmark + Paprika anrösten. Fond + Essig ablöschen.","Fleisch rein. 2h 180°C, dann 1h 160°C.","Portionieren + einfrieren."],
-    curryhuhn:["Tomatenmark + Currypaste anbraten.","Mit Kokos-Sahne ablöschen.","Hähnchen + Gemüse + Gewürze. 20 Min.","Skyr + Walnüsse einrühren."],
-    stroganoff:["Fleisch scharf anbraten, herausnehmen.","Zwiebeln glasig. Champignons goldbraun.","Mehl + Fond + Worcestershire + Senf.","Joghurt + Fleisch rein, kurz erwärmen."],
-    butterchicken:["Zwiebel, Knoblauch, Ingwer andünsten.","Butter + Gewürze 3 Min dünsten.","Tomaten 3 Min aufkochen.","Hähnchen 15 Min garen. Joghurt einrühren."],
-    tikka:["Abends: Marinade + Hähnchen einlegen.","Hähnchen anbraten. Beiseite.","Zwiebeln in Ghee. Gewürze + Tomaten + Fond 10 Min.","Hähnchen + Cremefine 10 Min. Portionieren."]
-  };
-  var tips={dahl:"Kocht sich nach Schritt 4 von selbst.",bolognese:"38g Protein — höchstes im Set.",gulasch:"Ofen macht die Arbeit. Fleisch wird gabelzart.",curryhuhn:"Walnüsse statt Cashews.",stroganoff:"Joghurt statt Creme Fine.",butterchicken:"Butter halbiert, Joghurt statt Sahne.",tikka:"Marinade über Nacht = deutlich mehr Geschmack."};
-  var kcs={dahl:290,bolognese:310,gulasch:245,curryhuhn:300,stroganoff:219,butterchicken:270,tikka:260};
-  var ps={dahl:"35g",bolognese:"38g",gulasch:"30g",curryhuhn:"30g",stroganoff:"32g",butterchicken:"27g",tikka:"29g"};
-  var fs={dahl:"8g",bolognese:"7g",gulasch:"10g",curryhuhn:"12g",stroganoff:"6g",butterchicken:"11g",tikka:"9g"};
-  var ks={dahl:"18g",bolognese:"16g",gulasch:"7g",curryhuhn:"10g",stroganoff:"4g",butterchicken:"9g",tikka:"8g"};
-  var ingHtml='<div class="ing-grid">'+ings[id].map(function(x){return '<div class="ing-i">'+x+'</div>';}).join("")+'</div>';
-  document.getElementById("pp").innerHTML=
-    '<button class="cls-btn" onclick="cR()">Schließen</button>'+
-    '<div class="pp-ttl">'+names[id]+'</div>'+
-    '<div class="pp-sub">20 Portionen · TK-Gericht</div>'+
-    '<div class="port-b">Portionsgröße Dose: Florian = <strong>'+fp+'g</strong> &nbsp;·&nbsp; Laura = <strong>'+lp+'g</strong></div>'+
-    '<div class="pp-mac">'+
-      '<div class="mb"><div class="mv">'+kcs[id]+'</div><div class="ml2">kcal</div></div>'+
-      '<div class="mb"><div class="mv">'+ps[id]+'</div><div class="ml2">Protein</div></div>'+
-      '<div class="mb"><div class="mv">'+fs[id]+'</div><div class="ml2">Fett</div></div>'+
-      '<div class="mb"><div class="mv">'+ks[id]+'</div><div class="ml2">KH</div></div>'+
-    '</div>'+
-    '<div class="pp-sec">Zutaten</div>'+ingHtml+
-    '<div class="pp-sec">Zubereitung</div>'+stepsHtml(steps[id])+
-    '<div class="tip-b">Tipp: '+tips[id]+'</div>';
-  document.getElementById("ov").classList.add("open");
-}
-
-function oRAbend(idx){
-  var s=ABEND[idx],key="ab"+idx;
-  var f=scaleFactor(ST.fKc);
-  var m=mac(s.ing,f);
-  document.getElementById("pp").innerHTML=
-    '<button class="cls-btn" onclick="cR()">Schließen</button>'+
-    '<div class="pp-ttl">'+s.tag+': '+s.name+'</div>'+
-    '<div class="pp-sub">Florian Abend · Mengen bei '+ST.fKc+'kcal</div>'+
-    '<div class="pp-mac">'+
-      '<div class="mb"><div class="mv">'+m.kc+'</div><div class="ml2">kcal</div></div>'+
-      '<div class="mb"><div class="mv">'+m.p+'</div><div class="ml2">Protein</div></div>'+
-      '<div class="mb"><div class="mv">'+m.f+'</div><div class="ml2">Fett</div></div>'+
-      '<div class="mb"><div class="mv" style="color:var(--blue)">'+m.k+'</div><div class="ml2">KH ✓</div></div>'+
-    '</div>'+
-    ingTable(key,s.ing,f)+
-    '<div class="tip-b">Tipp: '+s.tip+'</div>';
-  document.getElementById("ov").classList.add("open");
-}
-
-function oRSnack(idx){
-  var s=SNACK[idx],key="sn"+idx;
-  var f=scaleFactor(ST.lKc);
-  var m=mac(s.ing,f);
-  document.getElementById("pp").innerHTML=
-    '<button class="cls-btn" onclick="cR()">Schließen</button>'+
-    '<div class="pp-ttl">'+s.name+'</div>'+
-    '<div class="pp-sub">Laura Snack · Mengen bei '+ST.lKc+'kcal</div>'+
-    '<div class="pp-mac">'+
-      '<div class="mb"><div class="mv">'+m.kc+'</div><div class="ml2">kcal</div></div>'+
-      '<div class="mb"><div class="mv">'+m.p+'</div><div class="ml2">Protein</div></div>'+
-      '<div class="mb"><div class="mv">'+m.f+'</div><div class="ml2">Fett</div></div>'+
-      '<div class="mb"><div class="mv">'+m.k+'</div><div class="ml2">KH</div></div>'+
-    '</div>'+
-    ingTable(key,s.ing,f)+
-    '<div class="tip-b">Tipp: '+s.tip+'</div>';
-  document.getElementById("ov").classList.add("open");
-}
-
-
-function renderSnacks(){
-  var lS=Math.round(ST.lKc/5),html="";
-  var lf=scaleFactor(ST.lKc);
-  SNACK.forEach(function(s,i){
-    var m=mac(s.ing,lf),d=lS-m.kc,h=Math.abs(d)<30?"passt ✓":d>0?"+"+d+"kcal → größer":d+"kcal → kleiner";
-    var ingStr=s.ing.map(function(x){return Math.round(x.v*lf*10)/10+(x.u!=="Stk"&&x.u!=="Schb."?x.u:" Stk")+" "+x.n;}).join(" · ");
-    html+='<div class="sn-c" onclick="oRSnack('+i+')">'+
-      '<div class="sn-n">'+s.name+' <span class="sn-tg" style="background:'+s.tc+';color:'+s.tt+'">'+s.tag+'</span></div>'+
-      '<div class="sn-m">'+ingStr+'</div>'+
-      '<div class="sn-mk"><span class="sn-mb">'+m.kc+' kcal</span><span class="sn-mb">'+m.p+'g P</span><span class="sn-mb">'+m.f+'g F</span><span class="sn-mb sn-kh">'+m.k+'g KH</span></div>'+
-      '<div class="sn-h">Slot ~'+lS+'kcal: '+h+' · Anklicken zum Bearbeiten</div>'+
-    '</div>';
-  });
-  document.getElementById("sgrid").innerHTML=html;
-}
-
-function renderAbend(){
-  var html="";
-  var ff=scaleFactor(ST.fKc);
-  ABEND.forEach(function(s,i){
-    var m=mac(s.ing,ff);
-    var ingStr=s.ing.map(function(x){return Math.round(x.v*ff*10)/10+(x.u!=="Stk"&&x.u!=="Schb."?x.u:" Stk")+" "+x.n;}).join(" · ");
-    html+='<div class="sn-c" onclick="oRAbend('+i+')">'+
-      '<div class="sn-n" style="color:var(--fc)"><strong>'+s.tag+':</strong> '+s.name+'</div>'+
-      '<div class="sn-m">'+ingStr+'</div>'+
-      '<div class="sn-mk"><span class="sn-mb">'+m.kc+' kcal</span><span class="sn-mb">'+m.p+'g P</span><span class="sn-mb">'+m.f+'g F</span><span class="sn-mb sn-kh">'+m.k+'g KH ✓</span></div>'+
-      '<div class="sn-h">Anklicken zum Bearbeiten der Mengen</div>'+
-    '</div>';
-  });
-  document.getElementById("fgrid").innerHTML=html;
-}
-
-function cR(){document.getElementById("ov").classList.remove("open");}
-function cib(e){if(e.target===document.getElementById("ov"))cR();}
-
-function gK(w){if(w<=4)return null;return ROT[(w-5)%7];}
-function renderKal(){
-  var tb=document.getElementById("kbody"),rows="";
-  var b={};ROT.forEach(function(g){b[g]=20;});
-  for(var w=1;w<=20;w++){
-    ROT.forEach(function(g){b[g]-=4;});
-    var g=gK(w),dish,port,rc="";
-    if(w<=4){dish='<span class="tbdg tbdg-a">Aufbau-Phase</span>';port="TK wird aufgebaut";}
-    else{var v=b[g]+4;port=Math.max(0,v)+" Port. übrig";dish='<span class="tbdg tbdg-c">'+RN[g]+'</span>';b[g]+=20;}
-    if(w===ST.week)rc="cur";
-    rows+='<tr class="'+rc+'"><td style="font-size:.78rem;color:#6B6960">Woche '+w+'</td><td>'+dish+'</td><td style="font-size:.78rem;color:#6B6960">'+port+'</td></tr>';
-  }
-  tb.innerHTML=rows;
-}
-function uSa(){
-  var e1=document.getElementById("sa-lbl"),e2=document.getElementById("sa-dish");
-  if(!e1)return;var g=gK(ST.week);
-  e1.textContent=g?"Woche "+ST.week+" — heute kochen:":"Woche "+ST.week+" — Aufbau";
-  e2.textContent=g?RN[g]+" · 20 Port.":"→ Kochplan Tab";
-}
-function cw(d){
-  ST.week=Math.max(1,Math.min(20,ST.week+d));
-  document.getElementById("wlbl").textContent="Woche "+ST.week;
-  var w2=document.getElementById("wlbl2");if(w2)w2.textContent="Woche "+ST.week;
-  renderWeek();renderKal();
-}
-function upd(){
-  ST.fKg=parseInt(document.getElementById("fkg").value);
-  ST.fKc=parseInt(document.getElementById("fkc").value);
-  ST.lKg=parseInt(document.getElementById("lkg").value);
-  ST.lKc=parseInt(document.getElementById("lkc").value);
-  document.getElementById("fkg-v").textContent=ST.fKg+" kg";
-  document.getElementById("fkc-v").textContent=ST.fKc;
-  document.getElementById("lkg-v").textContent=ST.lKg+" kg";
-  document.getElementById("lkc-v").textContent=ST.lKc;
-  renderInfo();renderWeek();renderSnacks();renderAbend();renderKal();
-}
-function sv(id,btn){
-  document.querySelectorAll(".view").forEach(function(v){v.classList.remove("active");});
-  document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active");});
-  document.getElementById(id).classList.add("active");btn.classList.add("active");
-}
-
-document.getElementById("fkg").addEventListener("input",upd);
-document.getElementById("fkc").addEventListener("input",upd);
-document.getElementById("lkg").addEventListener("input",upd);
-document.getElementById("lkc").addEventListener("input",upd);
-ROT.forEach(function(id){document.getElementById("w-"+id).addEventListener("input",function(){saveW(id);});});
-loadAll();loadW();upd();
 </script>
 </body>
 </html>
