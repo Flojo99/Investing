@@ -131,25 +131,34 @@ textarea{resize:vertical;min-height:60px}
 <div class="topbar">
   <span class="title">📊 Trading Brain</span>
   <div style="display:flex;align-items:center;gap:8px">
-    <a href="https://claude.ai/chat/adc703f4-5bd6-4307-992a-b372c863cf58" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;color:#fff;font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;text-decoration:none;">🔄 Tages-Update</a>
+    <a href="https://claude.ai/chat/adc703f4-5bd6-4307-992a-b372c863cf58" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;color:#fff;font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;text-decoration:none;">🔄 Wochen-Update</a>
     <span class="date" id="today-date"></span>
   </div>
 </div>
 
+<div style="background:#E6F1FB;color:#0C447C;font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;margin-bottom:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px">
+  <span>📅 Datenstand: <strong>10. Juni 2026</strong></span>
+  <span style="font-weight:400;color:#5585B5">Manuell gepflegt – Kurse können abweichen</span>
+</div>
+
 <div class="tabs">
   <button class="tab active" onclick="switchTab('overview',this)">Übersicht</button>
-  <button class="tab" onclick="switchTab('watchlist',this)">Watchlist</button>
   <button class="tab" onclick="switchTab('radar',this)">Makro-Radar</button>
-  <button class="tab" onclick="switchTab('short',this)">Short-Radar</button>
-  <button class="tab" onclick="switchTab('aschenbrenner',this)">Drunter-Liegend</button>
   <button class="tab" onclick="switchTab('heatmap',this)">Sektoren</button>
   <button class="tab" onclick="switchTab('kalender',this)">Kalender</button>
+  <button class="tab" onclick="switchTab('aschenbrenner',this)">Drunter-Liegend</button>
+  <button class="tab" onclick="switchTab('watchlist',this)">Watchlist</button>
+  <button class="tab" onclick="switchTab('short',this)">Short-Radar</button>
   <button class="tab" onclick="switchTab('journal',this)">Trade-Journal</button>
   <button class="tab" onclick="switchTab('quellen',this)">Quellen</button>
 </div>
 
 <!-- ÜBERSICHT -->
 <div id="tab-overview" class="panel active">
+  <div class="card" style="background:#1a1a1a;color:#fff;border-color:#1a1a1a">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#999;margin-bottom:6px">Die Lage in einem Satz</div>
+    <div style="font-size:14px;line-height:1.6">Inflation zurück (CPI 4,2%), Fed bleibt hart, Iran-Krieg eskaliert – Risk-Off überall: Krypto in Extreme Fear (12), Gold –22% vom Hoch, Aktienindizes unter Druck. <strong>Cash ist gerade eine Position.</strong></div>
+  </div>
   <div class="grid3">
     <div class="metric" onclick="showPopup('fg-aktien')"><div class="metric-lbl">Fear &amp; Greed Aktien</div><div class="metric-val red">28 – Fear</div><div class="metric-hint">Tippen für Details ↗</div></div>
     <div class="metric" onclick="showPopup('fg-krypto')"><div class="metric-lbl">Fear &amp; Greed Krypto</div><div class="metric-val red">12 – Extreme Fear</div><div class="metric-hint">Tippen für Details ↗</div></div>
@@ -876,5 +885,9 @@ function renderWatchlist(){
 renderWatchlist();
 
 </script>
+<div style="margin-top:2rem;padding-top:1rem;border-top:1px solid #e8e8e8;font-size:11px;color:#999;line-height:1.6;text-align:center">
+  Private Markteinschätzung – keine Anlageberatung, keine Anlagevermittlung, keine Handlungsempfehlung.<br>
+  Alle Angaben ohne Gewähr. Investitionen in Wertpapiere und Kryptowährungen bergen Verlustrisiken bis zum Totalverlust.
+</div>
 </body>
 </html>
